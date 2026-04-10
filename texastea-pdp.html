@@ -316,10 +316,18 @@
       color: var(--grey-mid);
       margin: 0 0 20px 0;
     }
-    .tt-product-desc {
+    .tt-desc-flavor-row {
+      display: grid;
+      grid-template-columns: 60% 40%;
+      gap: 28px;
+      align-items: start;
       margin: 0 0 20px 0;
       padding: 0 0 20px 0;
       border-bottom: var(--border-std);
+    }
+    .tt-product-desc {
+      margin: 0;
+      padding: 0;
     }
     .tt-desc-tagline {
       font-family: var(--font-display);
@@ -806,48 +814,21 @@
       object-fit: contain;
     }
     .tt-origin__right {
+      position: relative;
       background: var(--cream-dark);
       border: var(--border-heavy);
       border-radius: var(--radius);
-      min-height: 320px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 32px;
-      text-align: center;
+      min-height: 400px;
+      padding: 0;
+      overflow: hidden;
     }
-    .tt-origin__location {
-      font: 800 48px/1 var(--font-display);
-      text-transform: uppercase;
-      color: var(--red);
-      margin: 0;
-    }
-    .tt-origin__map-placeholder {
-      width: 160px;
-      height: 90px;
-      background: var(--black);
-      margin: 24px 0;
-    }
-    .tt-origin__map-img-wrap {
-      position: relative;
-      width: 240px;
-      height: 160px;
-      margin: 24px 0;
-      border: 2px solid var(--black);
-      background: var(--cream);
-    }
-    .tt-origin__map-img-wrap img {
+    .tt-origin__map-img {
+      display: block;
       width: 100%;
       height: 100%;
+      min-height: 400px;
       object-fit: cover;
-      display: block;
-    }
-    .tt-origin__map-note {
-      font: 400 11px/1.3 var(--font-display);
-      text-transform: uppercase;
-      color: var(--grey-mid);
-      margin: 0;
+      border-radius: 0;
     }
 
     /* ================================================================
@@ -1380,9 +1361,8 @@
        FLAVOR PROFILE DOTS — buy box insert
        ================================================================ */
     .tt-flavor-profile {
-      margin-bottom: 20px;
-      padding: 16px 0 16px 0;
-      border-bottom: var(--border-std);
+      margin: 0;
+      padding: 0;
     }
     .tt-flavor-header {
       font-family: var(--font-display);
@@ -1516,18 +1496,28 @@
        ================================================================ */
     .tt-proof__img-wrap {
       margin: 0 auto 20px auto;
-      width: 140px;
-      height: 140px;
+      width: 180px;
+      height: 180px;
+      overflow: hidden;
+      position: relative;
+    }
+    .tt-proof__real-img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
     }
     .tt-proof__img-placeholder {
-      width: 140px;
-      height: 140px;
+      width: 180px;
+      height: 180px;
       background: #1A1A1A;
       border: 2px solid #333333;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 12px;
+      box-sizing: border-box;
     }
     .tt-proof__img-alt {
       font-family: var(--font-display);
@@ -1646,16 +1636,16 @@
     }
     .tt-cert-badge-wrap {
       margin-bottom: 20px;
-      width: 72px;
-      height: 72px;
+      width: 120px;
+      height: 120px;
     }
     .tt-cert-img-wrap {
-      width: 72px !important;
-      height: 72px !important;
+      width: 120px !important;
+      height: 120px !important;
     }
     .tt-cert-img-wrap img {
-      width: 72px;
-      height: 72px;
+      width: 120px;
+      height: 120px;
       object-fit: contain;
     }
     .tt-cert-title {
@@ -1926,6 +1916,8 @@
 
       .tt-product-title { font-size: 40px; }
 
+      .tt-desc-flavor-row { grid-template-columns: 1fr; gap: 20px; }
+
       .tt-plan-cards { grid-template-columns: 1fr; }
       .tt-card-b-head { padding-right: 100px; }
 
@@ -2109,44 +2101,45 @@
         <!-- 4. Fact line -->
         <p class="tt-fact-line">12 &times; 16oz glass bottles &nbsp;&middot;&nbsp; Pure cane sugar &nbsp;&middot;&nbsp; Organic black tea &nbsp;&middot;&nbsp; Fresh lemon juice</p>
 
-        <!-- PRODUCT DESCRIPTION -->
-        <div class="tt-product-desc">
-          <p class="tt-desc-tagline">Bold. Classic. Pure Texas Sweetness.</p>
-          <p class="tt-desc-body">Sugar Land Sweet Tea is brewed with single-origin organic black tea, balanced with cold-pressed lemon juice, and sweetened with pure cane sugar from the very fields that gave Sugar Land its name. Three ingredients. Glass bottled. No corn syrup, no flavorings, no shortcuts.</p>
-        </div>
+        <!-- PRODUCT DESCRIPTION + FLAVOR PROFILE — side-by-side wrapper -->
+        <div class="tt-desc-flavor-row">
+          <div class="tt-product-desc">
+            <p class="tt-desc-tagline">Bold. Classic. Pure Texas Sweetness.</p>
+            <p class="tt-desc-body">Sugar Land Sweet Tea is brewed with single-origin organic black tea, balanced with cold-pressed lemon juice, and sweetened with pure cane sugar from the very fields that gave Sugar Land its name. Three ingredients. Glass bottled. No corn syrup, no flavorings, no shortcuts.</p>
+          </div>
 
-        <!-- FLAVOR PROFILE DOTS — inserted before subscription module -->
-        <div class="tt-flavor-profile">
-          <div class="tt-flavor-header">FLAVOR PROFILE</div>
-          <div class="tt-flavor-grid">
-            <div class="tt-flavor-row">
-              <span class="tt-flavor-label">SWEET</span>
-              <div class="tt-flavor-dots">
-                <span class="tt-dot tt-dot-filled"></span>
-                <span class="tt-dot tt-dot-filled"></span>
-                <span class="tt-dot tt-dot-filled"></span>
-                <span class="tt-dot tt-dot-filled"></span>
-                <span class="tt-dot tt-dot-empty"></span>
+          <div class="tt-flavor-profile">
+            <div class="tt-flavor-header">FLAVOR PROFILE</div>
+            <div class="tt-flavor-grid">
+              <div class="tt-flavor-row">
+                <span class="tt-flavor-label">SWEET</span>
+                <div class="tt-flavor-dots">
+                  <span class="tt-dot tt-dot-filled"></span>
+                  <span class="tt-dot tt-dot-filled"></span>
+                  <span class="tt-dot tt-dot-filled"></span>
+                  <span class="tt-dot tt-dot-filled"></span>
+                  <span class="tt-dot tt-dot-empty"></span>
+                </div>
               </div>
-            </div>
-            <div class="tt-flavor-row">
-              <span class="tt-flavor-label">SOUR</span>
-              <div class="tt-flavor-dots">
-                <span class="tt-dot tt-dot-filled"></span>
-                <span class="tt-dot tt-dot-empty"></span>
-                <span class="tt-dot tt-dot-empty"></span>
-                <span class="tt-dot tt-dot-empty"></span>
-                <span class="tt-dot tt-dot-empty"></span>
+              <div class="tt-flavor-row">
+                <span class="tt-flavor-label">SOUR</span>
+                <div class="tt-flavor-dots">
+                  <span class="tt-dot tt-dot-filled"></span>
+                  <span class="tt-dot tt-dot-empty"></span>
+                  <span class="tt-dot tt-dot-empty"></span>
+                  <span class="tt-dot tt-dot-empty"></span>
+                  <span class="tt-dot tt-dot-empty"></span>
+                </div>
               </div>
-            </div>
-            <div class="tt-flavor-row">
-              <span class="tt-flavor-label">SALTY</span>
-              <div class="tt-flavor-dots">
-                <span class="tt-dot tt-dot-filled"></span>
-                <span class="tt-dot tt-dot-empty"></span>
-                <span class="tt-dot tt-dot-empty"></span>
-                <span class="tt-dot tt-dot-empty"></span>
-                <span class="tt-dot tt-dot-empty"></span>
+              <div class="tt-flavor-row">
+                <span class="tt-flavor-label">SALTY</span>
+                <div class="tt-flavor-dots">
+                  <span class="tt-dot tt-dot-filled"></span>
+                  <span class="tt-dot tt-dot-empty"></span>
+                  <span class="tt-dot tt-dot-empty"></span>
+                  <span class="tt-dot tt-dot-empty"></span>
+                  <span class="tt-dot tt-dot-empty"></span>
+                </div>
               </div>
             </div>
           </div>
@@ -2254,8 +2247,8 @@
         <div class="tt-trust-strip">
           <div class="tt-trust-col">
             <i class="tt-trust-icon" data-lucide="lock"></i>
-            <span class="tt-trust-label">Price locked at checkout</span>
-            <span class="tt-trust-sub">Yours forever, never increases</span>
+            <span class="tt-trust-label">Broken bottles replaced, no questions</span>
+            <span class="tt-trust-sub">Glass ships protected. If it breaks, we fix it.</span>
           </div>
           <div class="tt-trust-col">
             <i class="tt-trust-icon" data-lucide="repeat"></i>
@@ -2348,7 +2341,7 @@
     <div class="tt-proof__grid">
       <div class="tt-proof__col tt-proof__col--1">
         <div class="tt-proof__img-wrap">
-          <img src="https://cdn.shopify.com/s/files/1/0784/9118/9497/files/canesugar.png?v=1775844969" alt="Pure cane sugar crystals" style="width:140px;height:140px;object-fit:contain;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <img class="tt-proof__real-img" src="https://cdn.shopify.com/s/files/1/0784/9118/9497/files/canesugar.png?v=1775844969" alt="Pure cane sugar crystals" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
           <div class="tt-proof__img-placeholder" style="display:none;">
             <span class="tt-proof__img-alt">PURE CANE SUGAR</span>
           </div>
@@ -2358,7 +2351,7 @@
       </div>
       <div class="tt-proof__col tt-proof__col--2">
         <div class="tt-proof__img-wrap">
-          <img src="https://cdn.shopify.com/s/files/1/0784/9118/9497/files/TEA.png?v=1775845800" alt="Organic black tea leaves" style="width:140px;height:140px;object-fit:contain;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <img class="tt-proof__real-img" src="https://cdn.shopify.com/s/files/1/0784/9118/9497/files/TEA.png?v=1775845800" alt="Organic black tea leaves" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
           <div class="tt-proof__img-placeholder" style="display:none;">
             <span class="tt-proof__img-alt">ORGANIC BLACK TEA</span>
           </div>
@@ -2368,7 +2361,7 @@
       </div>
       <div class="tt-proof__col tt-proof__col--3">
         <div class="tt-proof__img-wrap">
-          <img src="https://cdn.shopify.com/s/files/1/0784/9118/9497/files/LEMON.png?v=1775844970" alt="Cold-pressed lemon" style="width:140px;height:140px;object-fit:contain;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <img class="tt-proof__real-img" src="https://cdn.shopify.com/s/files/1/0784/9118/9497/files/LEMON.png?v=1775844970" alt="Cold-pressed lemon" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
           <div class="tt-proof__img-placeholder" style="display:none;">
             <span class="tt-proof__img-alt">REAL LEMON JUICE</span>
           </div>
@@ -2410,12 +2403,8 @@
                      Simple flat graphic — black outline on cream, red dot at Sugar Land.
                      Do NOT generate a freehand Texas outline — use a real SVG path. -->
         <div class="tt-origin__right">
-          <div class="tt-origin__location">SUGAR LAND, TX</div>
-          <div class="tt-origin__map-img-wrap">
-            <img src="https://cdn.shopify.com/s/files/1/0784/9118/9497/files/suagrlandmap.png?v=1775844970" alt="Map showing Sugar Land, Texas location" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-            <div class="tt-img-fallback">SUGAR LAND, TX &mdash; MAP</div>
-          </div>
-          <div class="tt-origin__map-note">Founded 1838 &middot; Fort Bend County</div>
+          <img class="tt-origin__map-img" src="https://cdn.shopify.com/s/files/1/0784/9118/9497/files/suagrlandmap.png?v=1775844970" alt="Map showing Sugar Land, Texas location" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="tt-img-fallback">SUGAR LAND, TX &mdash; MAP</div>
         </div>
       </div>
     </div>
