@@ -1,0 +1,3161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sugar Land Sweet Tea — Texas Tea</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <style>
+    /* ================================================================
+       DESIGN TOKENS
+       ================================================================ */
+    :root {
+      --black:        #0D0D0D;
+      --white:        #FFFFFF;
+      --red:          #BF0A30;
+      --navy:         #002868;
+      --cream:        #F5F0E8;
+      --cream-dark:   #EDE8DC;
+      --gold:         #C8922A;
+      --grey-light:   #F2F2F2;
+      --grey-mid:     #999999;
+      --grey-dark:    #444444;
+
+      --font-display: 'Barlow Condensed', sans-serif;
+      --font-body:    'Barlow', sans-serif;
+
+      --shadow-card:  4px 4px 0 #0D0D0D;
+      --shadow-lift:  6px 6px 0 #BF0A30;
+      --border-std:   1px solid #0D0D0D;
+      --border-heavy: 2px solid #0D0D0D;
+      --border-red:   2px solid #BF0A30;
+
+      --container:    1240px;
+      --radius:       2px;
+    }
+
+    /* ================================================================
+       GLOBAL RESET + BASE
+       ================================================================ */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--black);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      padding-bottom: 0;
+    }
+    img { max-width: 100%; }
+    button { font-family: inherit; }
+    a { color: inherit; }
+
+    /* Reserve space at bottom of page so sticky ATC bar never covers content on mobile */
+    body.tt-has-sticky-offset { padding-bottom: 64px; }
+
+    /* Labels used as cards must be block so they fill grid cells */
+    label.tt-card-a,
+    label.tt-card-b { display: block; }
+
+    /* Nav logo wrap sizing (replaces inline style) */
+    .tt-nav-logo-link { display: inline-flex; align-items: center; text-decoration: none; }
+    .tt-nav-logo-link .tt-img-wrap { width: auto; height: 36px; display: inline-block; }
+    .tt-nav-logo-link .tt-img-wrap img { width: auto; height: 36px; object-fit: contain; }
+    .tt-nav-logo-link .tt-img-fallback {
+      position: static; display: none;
+      width: auto; height: 36px; padding: 0 12px;
+    }
+
+    /* ================================================================
+       ZONE 0 — TRUST BAR
+       ================================================================ */
+    .tt-trust-bar {
+      width: 100%;
+      height: 40px;
+      background: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+    }
+    .tt-trust-bar-text {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.10em;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* ================================================================
+       ZONE 0.5 — NAV BAR
+       ================================================================ */
+    .tt-nav {
+      width: 100%;
+      height: 64px;
+      background: var(--white);
+      border-bottom: var(--border-std);
+    }
+    .tt-nav-inner {
+      max-width: var(--container);
+      height: 100%;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .tt-nav-logo {
+      height: 36px;
+      width: auto;
+      display: block;
+    }
+    .tt-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .tt-nav-links a {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--black);
+      text-transform: uppercase;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+    .tt-nav-links a:hover { color: var(--red); }
+
+    /* ================================================================
+       ZONE 1 — HERO
+       ================================================================ */
+    .tt-hero { width: 100%; background: var(--white); }
+    .tt-hero-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 48px 20px;
+      display: grid;
+      grid-template-columns: 55% 45%;
+      gap: 48px;
+      align-items: start;
+    }
+
+    /* ---------- LEFT: Gallery ---------- */
+    .tt-gallery { display: block; width: 100%; }
+    .tt-gallery-lead {
+      position: relative;
+      width: 100%;
+      height: 520px;
+      background: var(--white);
+      border: var(--border-heavy);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .tt-gallery-lead .tt-img-wrap { width: 100%; height: 100%; }
+    .tt-gallery-lead .tt-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 24px;
+      box-sizing: border-box;
+      display: block;
+    }
+    .tt-made-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 6px 10px;
+      border-radius: 0;
+      z-index: 2;
+    }
+    .tt-gallery-lead-placeholder {
+      display: none;
+      width: 100%;
+      height: 100%;
+      background: var(--cream-dark);
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      font: 11px var(--font-display);
+      text-transform: uppercase;
+      color: var(--grey-mid);
+      text-align: center;
+      letter-spacing: 0.08em;
+      box-sizing: border-box;
+    }
+    .tt-thumbs {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 4px;
+      margin-top: 4px;
+    }
+    .tt-thumb {
+      width: 100%;
+      height: 80px;
+      background: var(--white);
+      border: var(--border-std);
+      border-radius: var(--radius);
+      padding: 4px;
+      cursor: pointer;
+      box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
+    }
+    .tt-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .tt-thumb-active { border: var(--border-red); }
+    .tt-thumb-placeholder {
+      width: 100%;
+      height: 100%;
+      background: var(--cream-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-body);
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--grey-mid);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-align: center;
+    }
+
+    /* ---------- RIGHT: Buy Box ---------- */
+    .tt-buy-box { display: block; width: 100%; }
+    .tt-origin-badge {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 5px 12px;
+      border-radius: 0;
+      margin-bottom: 12px;
+    }
+    .tt-collection-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 8px 0;
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    .tt-collection-label {
+      color: var(--red);
+    }
+    .tt-collection-sep {
+      color: var(--grey-mid);
+    }
+    .tt-collection-name {
+      color: var(--grey-dark);
+    }
+    .tt-product-title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 52px;
+      line-height: 1.0;
+      color: var(--black);
+      text-transform: uppercase;
+      margin: 0 0 10px 0;
+    }
+    .tt-review-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .tt-stars {
+      color: var(--red);
+      font-size: 16px;
+      letter-spacing: 1px;
+      line-height: 1;
+    }
+    .tt-review-link {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--grey-dark);
+      text-decoration: underline;
+    }
+    .tt-fact-line {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--grey-mid);
+      margin: 0 0 20px 0;
+    }
+    .tt-desc-flavor-row {
+      display: grid;
+      grid-template-columns: 60% 40%;
+      gap: 28px;
+      align-items: start;
+      margin: 0 0 20px 0;
+      padding: 0 0 20px 0;
+      border-bottom: var(--border-std);
+    }
+    .tt-product-desc {
+      margin: 0;
+      padding: 0;
+    }
+    .tt-desc-tagline {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--black);
+      margin: 0 0 10px 0;
+      line-height: 1.2;
+    }
+    .tt-desc-body {
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--grey-dark);
+      margin: 0 0 10px 0;
+    }
+    .tt-desc-serve {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-style: italic;
+      color: var(--grey-mid);
+      margin: 0;
+    }
+
+    /* ---------- Subscription Module ---------- */
+    .tt-sub-module {
+      background: var(--cream);
+      border: var(--border-heavy);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+    .tt-sub-anchor {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--red);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .tt-plan-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+
+    /* Card A */
+    .tt-card-a {
+      background: var(--white);
+      border: var(--border-std);
+      border-radius: var(--radius);
+      padding: 16px;
+      cursor: pointer;
+      box-sizing: border-box;
+    }
+    .tt-card-a.tt-card-selected {
+      background: var(--white);
+      border: var(--border-heavy);
+    }
+    .tt-card-a-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .tt-card-a-head input[type="radio"] {
+      margin: 0;
+      accent-color: var(--black);
+    }
+    .tt-card-a-label {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--black);
+      text-transform: uppercase;
+    }
+    .tt-card-a-price {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--black);
+      margin-bottom: 4px;
+    }
+    .tt-card-a-sub {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--grey-mid);
+    }
+
+    /* Card B */
+    .tt-card-b {
+      background: var(--cream-dark);
+      border: 2px solid var(--black);
+      border-radius: var(--radius);
+      padding: 16px;
+      position: relative;
+      cursor: pointer;
+      box-shadow: var(--shadow-lift);
+      box-sizing: border-box;
+    }
+    .tt-card-b.tt-card-b-unselected {
+      background: var(--cream);
+      border: var(--border-std);
+      box-shadow: none;
+    }
+    .tt-founding-badge {
+      position: absolute;
+      top: -1px;
+      right: -1px;
+      background: var(--red);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.10em;
+      padding: 4px 8px;
+      border-radius: 0;
+      z-index: 2;
+    }
+    .tt-card-b-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      padding-right: 90px;
+    }
+    .tt-card-b-head input[type="radio"] {
+      margin: 0;
+      accent-color: var(--black);
+    }
+    .tt-card-b-label {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--black);
+      text-transform: uppercase;
+    }
+    .tt-card-b-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+    .tt-card-b-price {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--black);
+      line-height: 1;
+    }
+    .tt-card-b-strike {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--grey-mid);
+      text-decoration: line-through;
+    }
+    .tt-card-b-subline {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--grey-mid);
+    }
+    .tt-per-bottle {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--grey-mid);
+      margin-left: 2px;
+    }
+    .tt-per-bottle-muted {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--grey-mid);
+    }
+    .tt-preview-btn {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 4px 10px;
+      background: var(--white);
+      border: 2px solid var(--black);
+      border-radius: 0;
+      font-family: var(--font-display);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--black);
+      cursor: pointer;
+    }
+    .tt-preview-btn:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    /* Value stack */
+    .tt-value-sep {
+      border: none;
+      border-top: 1px solid var(--cream-dark);
+      margin: 14px 0;
+    }
+    .tt-card-b.tt-card-b-unselected .tt-value-sep { border-top-color: var(--grey-light); }
+    .tt-value-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .tt-value-row:last-of-type { margin-bottom: 0; }
+    .tt-value-icon {
+      width: 16px;
+      height: 16px;
+      color: var(--black);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .tt-value-text { display: block; }
+    .tt-value-label {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--black);
+    }
+    .tt-value-sub {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--grey-dark);
+      line-height: 1.5;
+    }
+
+    /* Cadence selector */
+    .tt-cadence { margin-top: 16px; }
+    .tt-cadence-label {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--grey-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 8px;
+    }
+    .tt-cadence-pills {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+    }
+    .tt-pill {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border: var(--border-std);
+      border-radius: var(--radius);
+      background: var(--white);
+      color: var(--black);
+      cursor: pointer;
+      text-align: center;
+      box-sizing: border-box;
+    }
+    .tt-pill.tt-pill-selected {
+      background: var(--black);
+      color: var(--white);
+      border: var(--border-heavy);
+    }
+    .tt-cadence-caption-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+      margin-top: 6px;
+    }
+    .tt-cadence-caption {
+      grid-column: 2 / 3;
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-style: italic;
+      color: var(--grey-mid);
+      text-align: center;
+    }
+
+    /* ---------- CTA Button ---------- */
+    .tt-main-cta {
+      display: block;
+      width: 100%;
+      height: 58px;
+      border-radius: 0;
+      border: none;
+      margin-top: 20px;
+      background: var(--red);
+      color: var(--white);
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      padding: 0 16px;
+    }
+    .tt-main-cta.tt-cta-once {
+      background: var(--black);
+      color: var(--white);
+    }
+    .tt-main-cta:hover { opacity: 0.90; }
+
+    /* ---------- Trust Strip ---------- */
+    .tt-trust-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+      margin-top: 20px;
+    }
+    .tt-trust-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .tt-trust-icon {
+      width: 20px;
+      height: 20px;
+      color: var(--black);
+      margin-bottom: 6px;
+    }
+    .tt-trust-label {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 3px;
+    }
+    .tt-trust-sub {
+      font-family: var(--font-body);
+      font-size: 11px;
+      color: var(--grey-mid);
+    }
+
+    /* ---------- Price Anchoring Line ---------- */
+    .tt-price-anchor {
+      max-width: 340px;
+      margin: 0 auto;
+      padding-top: 12px;
+      text-align: center;
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-style: italic;
+      color: var(--grey-dark);
+      line-height: 1.6;
+    }
+
+    /* ---------- Ingredient Strip ---------- */
+    .tt-ingredient-strip {
+      border-top: var(--border-std);
+      padding-top: 14px;
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+    }
+    .tt-ingredient-col { display: block; }
+    .tt-ingredient-name {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 2px;
+    }
+    .tt-ingredient-origin {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--red);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .tt-ingredient-origin-neutral {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 400;
+      color: var(--grey-mid);
+    }
+    .tt-ingredient-name-sm {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 2px;
+    }
+
+    /* ================================================================
+       ZONE 2 — NAMED INGREDIENT PROOF BAR
+       ================================================================ */
+    .tt-proof {
+      background: var(--black);
+      padding: 60px 20px;
+      width: 100%;
+    }
+    .tt-proof__grid {
+      max-width: var(--container);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    .tt-proof__col {
+      padding: 0 40px;
+      text-align: center;
+    }
+    .tt-proof__col--1,
+    .tt-proof__col--2 {
+      border-right: 1px solid #333333;
+    }
+    .tt-proof__header {
+      font: 800 34px/1.1 var(--font-display);
+      text-transform: uppercase;
+      color: var(--white);
+      margin: 0 0 10px 0;
+    }
+    .tt-proof__body {
+      font: 400 13px/1.5 var(--font-body);
+      color: #999999;
+      margin: 0;
+    }
+
+    /* ================================================================
+       ZONE 3 — ORIGIN STORY MODULE
+       ================================================================ */
+    .tt-origin {
+      background: var(--cream);
+      padding: 80px 20px;
+    }
+    .tt-origin__inner {
+      max-width: var(--container);
+      margin: 0 auto;
+    }
+    .tt-origin__label {
+      display: inline-block;
+      background: var(--black);
+      color: var(--white);
+      font: 700 10px/1 var(--font-body);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 5px 12px;
+      margin-bottom: 24px;
+      border-radius: 0;
+    }
+    .tt-origin__grid {
+      display: grid;
+      grid-template-columns: 58% 42%;
+      gap: 60px;
+      align-items: stretch;
+    }
+    .tt-origin__left { display: block; }
+    .tt-origin__headline {
+      font: 900 60px/1.0 var(--font-display);
+      text-transform: uppercase;
+      color: var(--black);
+      margin: 0 0 24px 0;
+    }
+    .tt-origin__para {
+      font: 400 16px/1.7 var(--font-body);
+      color: var(--black);
+      margin: 0 0 16px 0;
+    }
+    .tt-origin__badges {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      margin-top: 28px;
+    }
+    .tt-origin__badges .tt-badge-wrap img {
+      height: 32px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+    .tt-origin__right {
+      position: relative;
+      background: var(--cream-dark);
+      border: var(--border-heavy);
+      border-radius: var(--radius);
+      min-height: 400px;
+      padding: 0;
+      overflow: hidden;
+    }
+    .tt-origin__map-img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 400px;
+      object-fit: cover;
+      border-radius: 0;
+    }
+
+    /* ================================================================
+       ZONE 4 — TASTE PROFILE
+       ================================================================ */
+    .tt-taste {
+      background: var(--white);
+      padding: 80px 20px;
+    }
+    .tt-taste__inner {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+    .tt-taste__intro {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--grey-dark);
+      margin: 0 0 36px 0;
+      max-width: 640px;
+    }
+    .tt-taste__bar-note {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--grey-mid);
+      line-height: 1.5;
+      margin: 6px 0 0 0;
+      font-style: italic;
+    }
+    .tt-taste__pairings {
+      margin-top: 48px;
+      padding-top: 36px;
+      border-top: 2px solid var(--black);
+    }
+    .tt-taste__pairings-header {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 22px;
+      text-transform: uppercase;
+      color: var(--black);
+      margin: 0 0 24px 0;
+      letter-spacing: 0.02em;
+    }
+    .tt-taste__pairings-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .tt-pairing-card {
+      background: var(--cream);
+      border: 2px solid var(--black);
+      border-radius: 2px;
+      padding: 18px 16px 16px 16px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      box-shadow: 4px 4px 0 var(--black);
+    }
+    .tt-pairing-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      background: var(--red);
+      color: var(--white);
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 0.02em;
+      margin-bottom: 10px;
+      border-radius: 0;
+    }
+    .tt-pairing-label {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--black);
+      margin-bottom: 6px;
+      letter-spacing: 0.02em;
+    }
+    .tt-pairing-note {
+      font-family: var(--font-body);
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--grey-dark);
+    }
+    .tt-taste__header {
+      font: 800 44px/1.1 var(--font-display);
+      text-transform: uppercase;
+      color: var(--black);
+      margin: 0 0 32px 0;
+      text-align: left;
+    }
+    .tt-taste__bar-row { margin-bottom: 20px; }
+    .tt-taste__bar-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .tt-taste__bar-label {
+      font: 700 14px/1 var(--font-display);
+      text-transform: uppercase;
+      color: var(--black);
+    }
+    .tt-taste__bar-percent {
+      font: 400 14px/1 var(--font-display);
+      text-transform: uppercase;
+      color: var(--grey-mid);
+    }
+    .tt-taste__bar-track {
+      height: 6px;
+      background: #E5E5E5;
+      width: 100%;
+      border-radius: 0;
+      margin-top: 8px;
+      position: relative;
+    }
+    .tt-taste__bar-fill {
+      height: 6px;
+      background: var(--red);
+      border-radius: 0;
+    }
+    .tt-fill-80 { width: 80%; }
+    .tt-fill-38 { width: 38%; }
+    .tt-fill-20 { width: 20%; }
+    .tt-taste__serving {
+      font: italic 400 14px/1.5 var(--font-body);
+      color: var(--grey-dark);
+      text-align: center;
+      margin-top: 28px;
+    }
+
+    /* ================================================================
+       ZONE 5 — REVIEWS
+       ================================================================ */
+    .tt-reviews {
+      background: var(--black);
+      padding: 80px 20px;
+    }
+    .tt-reviews-header {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 52px;
+      text-transform: uppercase;
+      color: var(--white);
+      text-align: center;
+      margin: 0 0 40px 0;
+      letter-spacing: 0.01em;
+    }
+    .tt-reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: var(--container);
+      margin: 0 auto;
+    }
+    .tt-reviews-carousel {
+      max-width: var(--container);
+      margin: 0 auto;
+      position: relative;
+      display: flex;
+      align-items: stretch;
+      gap: 12px;
+    }
+    .tt-reviews-viewport {
+      flex: 1;
+      overflow: hidden;
+    }
+    .tt-reviews-track {
+      display: flex;
+      gap: 20px;
+      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+    }
+    .tt-reviews-carousel .tt-review-card {
+      flex: 0 0 calc((100% - 40px) / 3);
+      box-sizing: border-box;
+    }
+    @media (max-width: 1024px) and (min-width: 769px) {
+      .tt-reviews-carousel .tt-review-card {
+        flex: 0 0 calc((100% - 20px) / 2);
+      }
+    }
+    .tt-rev-arrow {
+      flex: 0 0 44px;
+      width: 44px;
+      background: var(--white);
+      border: 2px solid var(--white);
+      border-radius: 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      align-self: center;
+      height: 44px;
+    }
+    .tt-rev-arrow:hover { background: var(--gold); border-color: var(--gold); }
+    .tt-rev-arrow i,
+    .tt-rev-arrow svg {
+      width: 20px;
+      height: 20px;
+      color: var(--black);
+    }
+    .tt-reviews-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 28px;
+    }
+    .tt-reviews-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: 2px solid var(--white);
+      background: transparent;
+      padding: 0;
+      cursor: pointer;
+    }
+    .tt-reviews-dot.tt-reviews-dot-active {
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+    .tt-review-card {
+      background: var(--white);
+      border: var(--border-heavy);
+      border-radius: 2px;
+      box-shadow: var(--shadow-card);
+      padding: 28px;
+    }
+    .tt-review-stars {
+      font-size: 16px;
+      color: var(--red);
+      margin-bottom: 14px;
+      letter-spacing: 0.05em;
+    }
+    .tt-review-text {
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--black);
+      line-height: 1.6;
+      margin: 0 0 18px 0;
+    }
+    .tt-review-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+    .tt-review-author {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--grey-dark);
+      letter-spacing: 0.04em;
+    }
+    .tt-review-badge {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--red);
+      padding: 3px 7px;
+      border: 1px solid var(--red);
+      border-radius: 0;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+    }
+
+    /* ================================================================
+       ZONE 6 — PRODUCT DETAILS
+       ================================================================ */
+    .tt-details {
+      background: var(--white);
+      padding: 80px 20px;
+    }
+    .tt-details-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+    }
+    .tt-details-col-header {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 28px;
+      text-transform: uppercase;
+      color: var(--black);
+      margin: 0 0 20px 0;
+      border-bottom: 2px solid var(--black);
+      padding-bottom: 12px;
+      letter-spacing: 0.01em;
+    }
+    .tt-details-body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: var(--black);
+      line-height: 1.7;
+    }
+    .tt-details-subhead {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 16px;
+      text-transform: uppercase;
+      color: var(--black);
+      margin: 16px 0 8px 0;
+      letter-spacing: 0.02em;
+    }
+    .tt-details-body p { margin: 0 0 14px 0; }
+    .tt-details-body p:last-child { margin-bottom: 0; }
+
+    /* ================================================================
+       ZONE 7 — CROSS-SELL
+       ================================================================ */
+    .tt-cross {
+      background: var(--cream);
+      padding: 80px 20px;
+    }
+    .tt-cross-header {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 52px;
+      text-transform: uppercase;
+      color: var(--black);
+      margin: 0 0 8px 0;
+      text-align: center;
+      letter-spacing: 0.01em;
+    }
+    .tt-cross-sub {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: var(--grey-dark);
+      margin: 0 0 40px 0;
+      text-align: center;
+    }
+    .tt-cross-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: var(--container);
+      margin: 0 auto;
+    }
+    .tt-cross-card {
+      background: var(--white);
+      border: var(--border-heavy);
+      border-radius: 2px;
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .tt-cross-img {
+      height: 220px;
+      background: var(--white);
+      padding: 16px;
+      box-sizing: border-box;
+      position: relative;
+    }
+    .tt-cross-img .tt-img-wrap { width: 100%; height: 100%; }
+    .tt-cross-img .tt-img-wrap img { object-fit: contain; width: 100%; height: 100%; }
+    .tt-cross-content {
+      padding: 16px 20px 20px 20px;
+    }
+    .tt-cross-location {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--red);
+      letter-spacing: 0.10em;
+      margin: 0 0 4px 0;
+    }
+    .tt-cross-name {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--black);
+      margin: 0 0 8px 0;
+      letter-spacing: 0.01em;
+    }
+    .tt-cross-price {
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--black);
+      margin: 0 0 16px 0;
+    }
+    .tt-cross-cta {
+      width: 100%;
+      height: 44px;
+      border-radius: 0;
+      border: none;
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+    }
+    .tt-cross-cta:hover { background: var(--red); }
+
+    /* ================================================================
+       ZONE 8 — STICKY ATC BAR
+       ================================================================ */
+    .tt-sticky {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--black);
+      height: 64px;
+      padding: 0 16px;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 9999;
+      border-top: 2px solid var(--white);
+      display: none;
+      box-sizing: border-box;
+    }
+    .tt-sticky-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .tt-sticky-name {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+    .tt-sticky-price {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--gold);
+      margin-top: 2px;
+    }
+    .tt-sticky-cta {
+      height: 44px;
+      padding: 0 16px;
+      border-radius: 0;
+      border: none;
+      cursor: pointer;
+      background: var(--red);
+      color: var(--white);
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .tt-sticky-cta.tt-sticky-cta-once {
+      background: var(--white);
+      color: var(--black);
+    }
+
+    /* ================================================================
+       UNIFIED IMAGE FALLBACK (declared last so it wins)
+       ================================================================ */
+    .tt-img-wrap {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    .tt-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .tt-img-fallback {
+      display: none;
+      position: absolute;
+      inset: 0;
+      background: var(--cream-dark);
+      border: 2px solid var(--black);
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      font: 11px var(--font-display);
+      text-transform: uppercase;
+      color: var(--grey-mid);
+      text-align: center;
+      letter-spacing: 0.08em;
+      box-sizing: border-box;
+    }
+
+    /* Badge wrap override — inline, natural height, static fallback */
+    .tt-badge-wrap {
+      display: inline-block;
+      position: relative;
+      width: auto;
+      height: 32px;
+    }
+    .tt-badge-wrap img {
+      width: auto;
+      height: 32px;
+      display: block;
+    }
+    .tt-badge-fallback {
+      position: static;
+      border: 2px solid var(--black);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      min-width: 60px;
+      height: 32px;
+      padding: 0 10px;
+      font-size: 9px;
+      background: var(--cream-dark);
+      color: var(--grey-mid);
+      font-family: var(--font-display);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      box-sizing: border-box;
+    }
+
+    /* ================================================================
+       FLAVOR PROFILE DOTS — buy box insert
+       ================================================================ */
+    .tt-flavor-profile {
+      margin: 0;
+      padding: 0;
+    }
+    .tt-flavor-header {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--grey-mid);
+      margin-bottom: 12px;
+    }
+    .tt-flavor-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .tt-flavor-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .tt-flavor-label {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--black);
+      min-width: 60px;
+    }
+    .tt-flavor-dots {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+    .tt-dot {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .tt-dot-filled {
+      background: var(--black);
+      border: 2px solid var(--black);
+    }
+    .tt-dot-empty {
+      background: transparent;
+      border: 2px solid var(--black);
+    }
+
+    /* ================================================================
+       ACCORDIONS
+       ================================================================ */
+    .tt-accordions {
+      border-top: var(--border-std);
+      margin-top: 20px;
+      margin-bottom: 0;
+    }
+    .tt-accordion {
+      border-bottom: var(--border-std);
+    }
+    .tt-acc-trigger {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 14px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      text-align: left;
+    }
+    .tt-acc-label {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--black);
+    }
+    .tt-acc-icon {
+      width: 16px;
+      height: 16px;
+      color: var(--black);
+      flex-shrink: 0;
+      transition: transform 0.2s ease;
+    }
+    .tt-accordion.tt-acc-open .tt-acc-icon {
+      transform: rotate(45deg);
+    }
+    .tt-acc-body {
+      padding: 0 0 16px 0;
+    }
+    .tt-acc-body[hidden] {
+      display: none;
+    }
+    .tt-acc-content {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--grey-dark);
+      line-height: 1.7;
+    }
+    .tt-acc-content p {
+      margin: 0 0 10px 0;
+    }
+    .tt-acc-content p:last-child {
+      margin-bottom: 0;
+    }
+    .tt-faq-item {
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--grey-light);
+    }
+    .tt-faq-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    .tt-faq-q {
+      font-weight: 600;
+      color: var(--black);
+      margin: 0 0 6px 0 !important;
+    }
+    .tt-faq-a {
+      color: var(--grey-dark);
+      margin: 0 !important;
+    }
+
+    /* ================================================================
+       ZONE 2 — INGREDIENT PROOF BAR IMAGE BLOCKS
+       ================================================================ */
+    .tt-proof__img-wrap {
+      margin: 0 auto 20px auto;
+      width: 180px;
+      height: 180px;
+      overflow: hidden;
+      position: relative;
+    }
+    .tt-proof__real-img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .tt-proof__img-placeholder {
+      width: 180px;
+      height: 180px;
+      background: #1A1A1A;
+      border: 2px solid #333333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      box-sizing: border-box;
+    }
+    .tt-proof__img-alt {
+      font-family: var(--font-display);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.10em;
+      color: #666666;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    /* ================================================================
+       REVIEW CARD ENHANCEMENTS
+       ================================================================ */
+    .tt-reviewer-top {
+      margin-bottom: 14px;
+    }
+    .tt-reviewer-photo {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--cream-dark);
+      border: 2px solid var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .tt-reviewer-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .tt-reviewer-initials {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--black);
+      text-transform: uppercase;
+    }
+    .tt-texan-badge {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      background: var(--navy);
+      padding: 3px 7px;
+      border-radius: 0;
+      margin-left: 6px;
+    }
+
+    /* ================================================================
+       CROSS-SELL CARD FLAVOR DOTS
+       ================================================================ */
+    .tt-cross-flavor {
+      margin-bottom: 14px;
+      padding-bottom: 14px;
+      border-bottom: var(--border-std);
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .tt-cross-flavor-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .tt-cross-flavor-label {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--black);
+      min-width: 50px;
+    }
+    .tt-cross-flavor-dots {
+      display: flex;
+      gap: 4px;
+    }
+
+    /* ================================================================
+       ZONE 3.5 — CERTIFICATION PROOF SECTION
+       ================================================================ */
+    .tt-certs {
+      background: var(--cream);
+      padding: 80px 20px;
+    }
+    .tt-certs__inner {
+      max-width: var(--container);
+      margin: 0 auto;
+    }
+    .tt-certs__label {
+      font-family: var(--font-display);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--grey-mid);
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    .tt-certs__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+    .tt-cert-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .tt-cert-badge-wrap {
+      margin-bottom: 20px;
+      width: 120px;
+      height: 120px;
+    }
+    .tt-cert-img-wrap {
+      width: 120px !important;
+      height: 120px !important;
+    }
+    .tt-cert-img-wrap img {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+    }
+    .tt-cert-title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--black);
+      margin: 0 0 12px 0;
+      letter-spacing: 0.04em;
+    }
+    .tt-cert-body {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--grey-dark);
+      line-height: 1.7;
+      margin: 0;
+      max-width: 280px;
+    }
+
+    /* ================================================================
+       TEXAS STORY CARD — MODAL
+       ================================================================ */
+    .tt-story-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    .tt-story-modal.tt-story-open {
+      display: flex;
+    }
+    .tt-story-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(18, 18, 18, 0.82);
+    }
+    .tt-story-dialog {
+      position: relative;
+      z-index: 2;
+      max-width: 560px;
+      width: calc(100% - 32px);
+      max-height: calc(100vh - 40px);
+      overflow-y: auto;
+    }
+    .tt-story-close {
+      position: absolute;
+      top: -16px;
+      right: -16px;
+      width: 40px;
+      height: 40px;
+      background: var(--white);
+      border: 2px solid var(--black);
+      border-radius: 0;
+      cursor: pointer;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 4px 4px 0 var(--black);
+      padding: 0;
+    }
+    .tt-story-close i,
+    .tt-story-close svg {
+      width: 18px;
+      height: 18px;
+      color: var(--black);
+    }
+    .tt-postcard {
+      position: relative;
+      background: var(--cream);
+      border: 2px solid var(--black);
+      border-radius: 2px;
+      box-shadow: 8px 8px 0 var(--red);
+      padding: 44px 40px 36px 40px;
+      box-sizing: border-box;
+    }
+    .tt-postcard__stamp {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      width: 64px;
+      height: 78px;
+    }
+    .tt-postcard__stamp-frame {
+      width: 100%;
+      height: 100%;
+      background: var(--white);
+      border: 2px dashed var(--black);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+    .tt-postcard__stamp-state {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 22px;
+      color: var(--red);
+      line-height: 1;
+    }
+    .tt-postcard__stamp-val {
+      font-family: var(--font-display);
+      font-size: 7px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--black);
+      text-transform: uppercase;
+    }
+    .tt-postcard__ribbon {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      margin-bottom: 16px;
+    }
+    .tt-postcard__title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 44px;
+      line-height: 1.0;
+      text-transform: uppercase;
+      color: var(--black);
+      margin: 0 0 6px 0;
+      letter-spacing: 0.01em;
+    }
+    .tt-postcard__sub {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--grey-dark);
+      margin-bottom: 20px;
+    }
+    .tt-postcard__divider {
+      border-top: 1px dashed var(--black);
+      margin: 0 0 20px 0;
+    }
+    .tt-postcard__body {
+      font-family: var(--font-body);
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--grey-dark);
+      margin: 0 0 14px 0;
+    }
+    .tt-postcard__body:last-of-type {
+      margin-bottom: 20px;
+    }
+    .tt-postcard__facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 0 0 20px 0;
+    }
+    .tt-postcard__fact {
+      background: var(--white);
+      border: 2px solid var(--black);
+      padding: 10px 8px;
+      text-align: center;
+    }
+    .tt-postcard__fact-label {
+      font-family: var(--font-body);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--grey-mid);
+      margin-bottom: 4px;
+    }
+    .tt-postcard__fact-val {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--black);
+      letter-spacing: 0.02em;
+    }
+    .tt-postcard__foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .tt-postcard__foot-left {
+      flex: 1;
+    }
+    .tt-postcard__foot-label {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--black);
+      margin-bottom: 2px;
+    }
+    .tt-postcard__foot-sub {
+      font-family: var(--font-body);
+      font-size: 11px;
+      color: var(--grey-mid);
+      font-style: italic;
+    }
+    .tt-postcard__foot-mark {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--red);
+      border: 2px solid var(--red);
+      padding: 4px 8px;
+      white-space: nowrap;
+    }
+
+    /* Nav logo fallback styled text */
+    .tt-nav-logo-link .tt-img-fallback.tt-img-fallback--show {
+      display: inline-flex;
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--black);
+      letter-spacing: 0.04em;
+      height: 36px;
+      align-items: center;
+      padding: 0;
+    }
+
+    /* ================================================================
+       MOBILE — max-width 768px
+       ================================================================ */
+    @media (max-width: 768px) {
+      /* Global */
+      body.tt-has-sticky-offset { padding-bottom: 64px; }
+
+      /* Trust bar */
+      .tt-trust-bar {
+        height: auto;
+        min-height: 40px;
+        padding: 8px 16px;
+      }
+      .tt-trust-bar-text {
+        white-space: normal;
+        font-size: 10px;
+        line-height: 1.4;
+      }
+
+      /* Nav */
+      .tt-nav-links { display: none; }
+
+      /* Hero / gallery / buy box */
+      .tt-hero-inner {
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding: 24px 16px;
+      }
+      .tt-gallery-lead { height: 360px; }
+      .tt-gallery-lead .tt-img-wrap img { padding: 16px; }
+      .tt-thumb { height: 64px; }
+
+      .tt-product-title { font-size: 40px; }
+
+      .tt-desc-flavor-row { grid-template-columns: 1fr; gap: 20px; }
+
+      .tt-plan-cards { grid-template-columns: 1fr; }
+      .tt-card-b-head { padding-right: 100px; }
+
+      .tt-trust-strip {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .tt-ingredient-strip {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .tt-buy-box { margin-top: 24px; }
+
+      /* Zone 2 */
+      .tt-proof { padding: 48px 20px; }
+      .tt-proof__grid { grid-template-columns: 1fr; }
+      .tt-proof__col {
+        padding: 0 20px;
+        margin-bottom: 32px;
+      }
+      .tt-proof__col:last-child { margin-bottom: 0; }
+      .tt-proof__col--1,
+      .tt-proof__col--2 { border-right: none; }
+      .tt-proof__header { font-size: 28px; }
+
+      /* Zone 3 */
+      .tt-origin { padding: 48px 20px; }
+      .tt-origin__grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .tt-origin__headline { font-size: 44px; }
+
+      /* Zone 4 */
+      .tt-taste { padding: 48px 20px; }
+      .tt-taste__header { font-size: 36px; }
+      .tt-taste__pairings-grid { grid-template-columns: 1fr; }
+
+      /* Zone 5 */
+      .tt-reviews { padding: 48px 20px; }
+      .tt-reviews-header { font-size: 40px; margin-bottom: 40px; }
+      .tt-reviews-grid { grid-template-columns: 1fr; }
+      .tt-reviews-carousel .tt-review-card {
+        flex: 0 0 100%;
+      }
+      .tt-rev-arrow { display: none; }
+      .tt-review-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      /* Zone 6 */
+      .tt-details { padding: 48px 20px; }
+      .tt-details-inner { grid-template-columns: 1fr; gap: 40px; }
+
+      /* Zone 7 */
+      .tt-cross { padding: 48px 20px; }
+      .tt-cross-header { font-size: 40px; }
+      .tt-cross-grid { grid-template-columns: 1fr; }
+
+      /* Zone 3.5 certs */
+      .tt-certs { padding: 48px 20px; }
+      .tt-certs__grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+
+  </style>
+</head>
+<body class="tt-has-sticky-offset">
+
+  <!-- ================================================================
+       ZONE 0 — TRUST BAR
+       ================================================================ -->
+  <div class="tt-trust-bar">
+    <div class="tt-trust-bar-text">Satisfaction guaranteed or your money back &nbsp;&nbsp;&middot;&nbsp;&nbsp; Free shipping on orders over $75 &nbsp;&nbsp;&middot;&nbsp;&nbsp; Glass bottled in Texas</div>
+  </div>
+
+  <!-- ================================================================
+       ZONE 0.5 — NAV BAR
+       ================================================================ -->
+  <nav class="tt-nav">
+    <div class="tt-nav-inner">
+      <a href="/" class="tt-nav-logo-link">
+        <div class="tt-img-wrap">
+          <img class="tt-nav-logo" src="https://texastea.com/cdn/shop/files/tt-logo-black.png" alt="Texas Tea" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="tt-img-fallback">TEXAS TEA</div>
+        </div>
+      </a>
+      <ul class="tt-nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/catalog">Catalog</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/distributors">Distributors</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ================================================================
+       ZONE 1 — HERO
+       ================================================================ -->
+  <section class="tt-hero">
+    <div class="tt-hero-inner">
+
+      <!-- ================= LEFT: GALLERY ================= -->
+      <div class="tt-gallery">
+
+        <div class="tt-gallery-lead">
+          <span class="tt-made-badge">MADE IN TEXAS</span>
+          <div class="tt-img-wrap">
+            <img id="tt-lead-img" src="https://texastea.com/cdn/shop/files/SugarLandSweetTea_8edc5f1b-5f9a-4bdc-8be4-91ebb63caaf2.png" alt="Sugar Land Sweet Tea — glass bottle, front label" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+            <div class="tt-img-fallback">Sugar Land Sweet Tea — glass bottle, front label</div>
+          </div>
+          <!-- REPLACE: lifestyle photo — cold bottle with condensation, poured over ice, outdoor Texas setting (porch, tailgate, backyard). Portrait orientation. -->
+          <div id="tt-lead-placeholder" class="tt-gallery-lead-placeholder">LIFESTYLE SHOT &mdash; COLD BOTTLE OVER ICE, TEXAS SETTING</div>
+        </div>
+
+        <div class="tt-thumbs">
+
+          <!-- Slot 1 — ACTIVE on load -->
+          <div class="tt-thumb tt-thumb-active" data-slot="1" data-src="https://texastea.com/cdn/shop/files/SugarLandSweetTea_8edc5f1b-5f9a-4bdc-8be4-91ebb63caaf2.png">
+            <div class="tt-img-wrap">
+              <img src="https://texastea.com/cdn/shop/files/SugarLandSweetTea_8edc5f1b-5f9a-4bdc-8be4-91ebb63caaf2.png" alt="Sugar Land Sweet Tea — glass bottle, front label" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+              <div class="tt-img-fallback">Front Label</div>
+            </div>
+            <!-- REPLACE: front-label pack shot of the 16oz bottle on white -->
+          </div>
+
+          <!-- Slot 2 -->
+          <div class="tt-thumb" data-slot="2" data-src="https://texastea.com/cdn/shop/files/SugarLandSweetTeaNEW_1.png">
+            <div class="tt-img-wrap">
+              <img src="https://texastea.com/cdn/shop/files/SugarLandSweetTeaNEW_1.png" alt="Sugar Land Sweet Tea — label closeup showing Sugar Land, TX origin" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+              <div class="tt-img-fallback">Label Closeup</div>
+            </div>
+            <!-- REPLACE: macro crop of the label showing "Sugar Land, TX" origin copy -->
+          </div>
+
+          <!-- Slot 3 -->
+          <div class="tt-thumb" data-slot="3" data-src="https://texastea.com/cdn/shop/files/SugarLandSweetTeaside.png">
+            <div class="tt-img-wrap">
+              <img src="https://texastea.com/cdn/shop/files/SugarLandSweetTeaside.png" alt="Sugar Land Sweet Tea — side profile showing glass bottle" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+              <div class="tt-img-fallback">Side Profile</div>
+            </div>
+            <!-- REPLACE: side-profile pack shot showing bottle silhouette and glass -->
+          </div>
+
+          <!-- Slot 4 -->
+          <div class="tt-thumb" data-slot="4" data-src="https://texastea.com/cdn/shop/files/SugarLandSweetTeaside2.png">
+            <div class="tt-img-wrap">
+              <img src="https://texastea.com/cdn/shop/files/SugarLandSweetTeaside2.png" alt="Sugar Land Sweet Tea — second side angle" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+              <div class="tt-img-fallback">Second Angle</div>
+            </div>
+            <!-- REPLACE: alternate side angle, showing back label / ingredients panel -->
+          </div>
+
+          <!-- Slot 5 — pure placeholder, no URL -->
+          <div class="tt-thumb tt-thumb-lifestyle" data-slot="5">
+            <div class="tt-thumb-placeholder">LIFESTYLE</div>
+            <!-- REPLACE: lifestyle photo — cold bottle with condensation, poured over ice, outdoor Texas setting (porch, tailgate, backyard). Portrait orientation. -->
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ================= RIGHT: BUY BOX ================= -->
+      <div class="tt-buy-box" id="buy-box">
+
+        <!-- 2. Collection line + Product title -->
+        <div class="tt-collection-line">
+          <span class="tt-collection-label">TEXAS TEAS COLLECTION</span>
+        </div>
+        <h1 class="tt-product-title">SUGAR LAND SWEET TEA</h1>
+
+        <!-- 3. Review line -->
+        <div class="tt-review-line">
+          <span class="tt-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <a class="tt-review-link" href="#reviews">(214 reviews)</a>
+        </div>
+
+        <!-- 4. Fact line -->
+        <p class="tt-fact-line">12 &times; 16oz glass bottles &nbsp;&middot;&nbsp; Pure cane sugar &nbsp;&middot;&nbsp; Organic black tea &nbsp;&middot;&nbsp; Fresh lemon juice</p>
+
+        <!-- PRODUCT DESCRIPTION + FLAVOR PROFILE — side-by-side wrapper -->
+        <div class="tt-desc-flavor-row">
+          <div class="tt-product-desc">
+            <p class="tt-desc-tagline">Bold. Classic. Pure Texas Sweetness.</p>
+            <p class="tt-desc-body">Sugar Land Sweet Tea is brewed with single-origin organic black tea, balanced with cold-pressed lemon juice, and sweetened with pure cane sugar from the very fields that gave Sugar Land its name. Three ingredients. Glass bottled. No corn syrup, no flavorings, no shortcuts.</p>
+          </div>
+
+          <div class="tt-flavor-profile">
+            <div class="tt-flavor-header">FLAVOR PROFILE</div>
+            <div class="tt-flavor-grid">
+              <div class="tt-flavor-row">
+                <span class="tt-flavor-label">SWEET</span>
+                <div class="tt-flavor-dots">
+                  <span class="tt-dot tt-dot-filled"></span>
+                  <span class="tt-dot tt-dot-filled"></span>
+                  <span class="tt-dot tt-dot-filled"></span>
+                  <span class="tt-dot tt-dot-filled"></span>
+                  <span class="tt-dot tt-dot-empty"></span>
+                </div>
+              </div>
+              <div class="tt-flavor-row">
+                <span class="tt-flavor-label">SOUR</span>
+                <div class="tt-flavor-dots">
+                  <span class="tt-dot tt-dot-filled"></span>
+                  <span class="tt-dot tt-dot-empty"></span>
+                  <span class="tt-dot tt-dot-empty"></span>
+                  <span class="tt-dot tt-dot-empty"></span>
+                  <span class="tt-dot tt-dot-empty"></span>
+                </div>
+              </div>
+              <div class="tt-flavor-row">
+                <span class="tt-flavor-label">SALTY</span>
+                <div class="tt-flavor-dots">
+                  <span class="tt-dot tt-dot-filled"></span>
+                  <span class="tt-dot tt-dot-empty"></span>
+                  <span class="tt-dot tt-dot-empty"></span>
+                  <span class="tt-dot tt-dot-empty"></span>
+                  <span class="tt-dot tt-dot-empty"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Subscription module -->
+        <div class="tt-sub-module">
+
+          <div class="tt-sub-anchor">874 Texans locked in their Founding Member rate this month</div>
+
+          <div class="tt-plan-cards">
+
+            <!-- CARD B — selected default (DOM first so it renders on top) -->
+            <label class="tt-card-b" id="tt-card-b" for="radio-sub">
+              <span class="tt-founding-badge">FOUNDING MEMBER</span>
+
+              <div class="tt-card-b-head">
+                <input type="radio" name="sub-plan" id="radio-sub" checked>
+                <span class="tt-card-b-label">SUBSCRIBE &amp; SAVE</span>
+              </div>
+
+              <div class="tt-card-b-price-row">
+                <span class="tt-card-b-price">$17.99 / case</span>
+                <span class="tt-card-b-strike">$23.99</span>
+                <span class="tt-per-bottle">&middot; <span class="tt-per-bottle-muted">$1.50 / bottle</span></span>
+              </div>
+              <div class="tt-card-b-subline">Save 25% &middot; Every 5 weeks</div>
+
+              <hr class="tt-value-sep">
+
+              <!-- Value stack -->
+              <div class="tt-value-row">
+                <i class="tt-value-icon" data-lucide="lock"></i>
+                <span class="tt-value-text">
+                  <span class="tt-value-label">Founding price, locked forever</span>
+                  <span class="tt-value-sub">Launch price. Locked permanently &mdash; new subscribers will pay more.</span>
+                </span>
+              </div>
+
+              <div class="tt-value-row">
+                <i class="tt-value-icon" data-lucide="shield"></i>
+                <span class="tt-value-text">
+                  <span class="tt-value-label">Reserved stock before it sells out</span>
+                  <span class="tt-value-sub">Poteet Strawberry and Fredericksburg Peach ship to you first when stock runs low.</span>
+                </span>
+              </div>
+
+              <div class="tt-value-row">
+                <i class="tt-value-icon" data-lucide="layout-grid"></i>
+                <span class="tt-value-text">
+                  <span class="tt-value-label">Build your own case every delivery</span>
+                  <span class="tt-value-sub">Pick up to 4 flavors per case, reconfigured before every delivery.</span>
+                </span>
+              </div>
+
+              <div class="tt-value-row">
+                <i class="tt-value-icon" data-lucide="map-pin"></i>
+                <span class="tt-value-text">
+                  <span class="tt-value-label">The Texas Story Card</span>
+                  <span class="tt-value-sub">A physical card profiling the Texas town behind your SKU. Ships once, never repeated.</span>
+                  <button type="button" class="tt-preview-btn" id="tt-story-preview-btn">PREVIEW</button>
+                </span>
+              </div>
+
+              <div class="tt-value-row">
+                <i class="tt-value-icon" data-lucide="repeat"></i>
+                <span class="tt-value-text">
+                  <span class="tt-value-label">Skip, swap, or pause anytime</span>
+                  <span class="tt-value-sub">Skip, swap, or pause in one click. No fees.</span>
+                </span>
+              </div>
+            </label>
+
+            <!-- CARD A — unselected default -->
+            <label class="tt-card-a" id="tt-card-a" for="radio-once">
+              <div class="tt-card-a-head">
+                <input type="radio" name="sub-plan" id="radio-once">
+                <span class="tt-card-a-label">TRY IT ONCE</span>
+              </div>
+              <div class="tt-card-a-price">$23.99 / case <span class="tt-per-bottle-muted">&middot; $2.00 / bottle</span></div>
+              <div class="tt-card-a-sub">One-time delivery</div>
+            </label>
+
+          </div>
+
+          <!-- Cadence selector — visible when Card B selected -->
+          <div class="tt-cadence" id="tt-cadence">
+            <span class="tt-cadence-label">Delivery frequency:</span>
+            <div class="tt-cadence-pills">
+              <button type="button" class="tt-pill" data-cadence="4">Every 4 weeks</button>
+              <button type="button" class="tt-pill tt-pill-selected" data-cadence="5">Every 5 weeks</button>
+              <button type="button" class="tt-pill" data-cadence="6">Every 6 weeks</button>
+            </div>
+            <div class="tt-cadence-caption-row">
+              <span class="tt-cadence-caption">Most Texans choose this</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 6. CTA Button -->
+        <button type="button" class="tt-main-cta" id="tt-main-cta">LOCK IN MY FOUNDING RATE &nbsp;&rarr;</button>
+
+        <!-- 7. Trust strip -->
+        <div class="tt-trust-strip">
+          <div class="tt-trust-col">
+            <i class="tt-trust-icon" data-lucide="lock"></i>
+            <span class="tt-trust-label">Broken bottles replaced, no questions</span>
+            <span class="tt-trust-sub">Glass ships protected. If it breaks, we fix it.</span>
+          </div>
+          <div class="tt-trust-col">
+            <i class="tt-trust-icon" data-lucide="repeat"></i>
+            <span class="tt-trust-label">Skip, swap, pause anytime</span>
+            <span class="tt-trust-sub">No fees, one click</span>
+          </div>
+          <div class="tt-trust-col">
+            <i class="tt-trust-icon" data-lucide="truck"></i>
+            <span class="tt-trust-label">First box ships in 2&ndash;3 days</span>
+            <span class="tt-trust-sub">Cancel before it ships, no charge</span>
+          </div>
+        </div>
+
+        <!-- ACCORDIONS — What's Inside + Shipping + FAQ -->
+        <div class="tt-accordions">
+
+          <div class="tt-accordion" id="acc-inside">
+            <button class="tt-acc-trigger" type="button" aria-expanded="false" aria-controls="acc-inside-body">
+              <span class="tt-acc-label">WHAT'S INSIDE</span>
+              <i class="tt-acc-icon" data-lucide="plus"></i>
+            </button>
+            <div class="tt-acc-body" id="acc-inside-body" hidden>
+              <div class="tt-acc-content">
+                <p><strong>Ingredients:</strong> Brewed organic black tea (water, tea), imperial pure cane sugar, lemon juice.</p>
+                <p><strong>Serving size:</strong> 16 fl oz (1 bottle) &nbsp;&middot;&nbsp; <strong>Calories:</strong> 101</p>
+                <p>Total sugars: 25g (pure cane &mdash; not high fructose corn syrup)<br>Sodium: Low salt</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="tt-accordion" id="acc-shipping">
+            <button class="tt-acc-trigger" type="button" aria-expanded="false" aria-controls="acc-shipping-body">
+              <span class="tt-acc-label">SHIPPING</span>
+              <i class="tt-acc-icon" data-lucide="plus"></i>
+            </button>
+            <div class="tt-acc-body" id="acc-shipping-body" hidden>
+              <div class="tt-acc-content">
+                <p>12 &times; 16oz glass bottles per case. Ships in a reinforced, glass-safe case.</p>
+                <p>Standard: 3&ndash;5 business days &nbsp;&middot;&nbsp; Express: 1&ndash;2 business days</p>
+                <p>Free shipping on all orders over $75. Founding Member subscribers receive priority shipping on every delivery.</p>
+                <p>Questions? 512 491 7244</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="tt-accordion" id="acc-faq">
+            <button class="tt-acc-trigger" type="button" aria-expanded="false" aria-controls="acc-faq-body">
+              <span class="tt-acc-label">FREQUENTLY ASKED QUESTIONS</span>
+              <i class="tt-acc-icon" data-lucide="plus"></i>
+            </button>
+            <div class="tt-acc-body" id="acc-faq-body" hidden>
+              <div class="tt-acc-content">
+                <div class="tt-faq-item">
+                  <p class="tt-faq-q">What if a bottle breaks in shipping?</p>
+                  <p class="tt-faq-a">Every case ships in a reinforced glass-safe box designed specifically for glass bottles. If anything arrives broken, we replace it &mdash; no photos required, no questions asked. Contact us at 512 491 7244 or reply to your order confirmation.</p>
+                </div>
+                <div class="tt-faq-item">
+                  <p class="tt-faq-q">Is this available in stores?</p>
+                  <p class="tt-faq-a">Texas Tea is stocked at select HEB and Kroger locations in Texas. However, several flavors &mdash; including Poteet Strawberry White Tea and Fredericksburg Peach Lemonade &mdash; are available exclusively online. Subscribing is the only way to guarantee access to those SKUs before they sell out.</p>
+                </div>
+                <div class="tt-faq-item">
+                  <p class="tt-faq-q">Can I cancel my subscription?</p>
+                  <p class="tt-faq-a">Yes &mdash; skip, swap, pause, or cancel anytime in one click from your subscriber portal. No emails. No phone calls. No fees. Founding Member pricing is locked for as long as you stay subscribed. If you cancel and re-subscribe later, you'll pay the then-current rate.</p>
+                </div>
+                <div class="tt-faq-item">
+                  <p class="tt-faq-q">What is the Founding Member price lock?</p>
+                  <p class="tt-faq-a">When you subscribe during the Founding Member window, your $17.99/case rate is locked permanently &mdash; even as the standard price increases. When this launch window closes, new subscribers pay the standard rate. Your rate never changes for as long as you remain subscribed.</p>
+                </div>
+                <div class="tt-faq-item">
+                  <p class="tt-faq-q">What sweetener is used?</p>
+                  <p class="tt-faq-a">Imperial pure cane sugar from Sugar Land, Texas. No high fructose corn syrup, no artificial sweeteners, no stevia. Cane sugar only.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Price anchoring line — moved after accordions -->
+        <p class="tt-price-anchor">Founding Members save an average of $72 a year versus one-time pricing. That gap widens every time the retail price goes up.</p>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       ZONE 2 — NAMED INGREDIENT PROOF BAR
+       ================================================================ -->
+  <section class="tt-proof">
+    <div class="tt-proof__grid">
+      <div class="tt-proof__col tt-proof__col--1">
+        <div class="tt-proof__img-wrap">
+          <img class="tt-proof__real-img" src="https://cdn.shopify.com/s/files/1/0784/9118/9497/files/canesugar.png?v=1775844969" alt="Pure cane sugar crystals" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="tt-proof__img-placeholder" style="display:none;">
+            <span class="tt-proof__img-alt">PURE CANE SUGAR</span>
+          </div>
+        </div>
+        <h3 class="tt-proof__header">PURE CANE SUGAR</h3>
+        <p class="tt-proof__body">From the sugarcane fields of Sugar Land, Texas</p>
+      </div>
+      <div class="tt-proof__col tt-proof__col--2">
+        <div class="tt-proof__img-wrap">
+          <img class="tt-proof__real-img" src="https://cdn.shopify.com/s/files/1/0784/9118/9497/files/TEA.png?v=1775845800" alt="Organic black tea leaves" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="tt-proof__img-placeholder" style="display:none;">
+            <span class="tt-proof__img-alt">ORGANIC BLACK TEA</span>
+          </div>
+        </div>
+        <h3 class="tt-proof__header">ORGANIC BLACK TEA</h3>
+        <p class="tt-proof__body">Single-origin, brewed fresh before bottling</p>
+      </div>
+      <div class="tt-proof__col tt-proof__col--3">
+        <div class="tt-proof__img-wrap">
+          <img class="tt-proof__real-img" src="https://cdn.shopify.com/s/files/1/0784/9118/9497/files/LEMON.png?v=1775844970" alt="Cold-pressed lemon" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="tt-proof__img-placeholder" style="display:none;">
+            <span class="tt-proof__img-alt">REAL LEMON JUICE</span>
+          </div>
+        </div>
+        <h3 class="tt-proof__header">REAL LEMON JUICE</h3>
+        <p class="tt-proof__body">Cold-pressed, not from concentrate</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       ZONE 3 — ORIGIN STORY MODULE
+       ================================================================ -->
+  <section class="tt-origin">
+    <div class="tt-origin__inner">
+      <span class="tt-origin__label">THE STORY</span>
+      <div class="tt-origin__grid">
+        <div class="tt-origin__left">
+          <h2 class="tt-origin__headline">FROM THE SUGARCANE FIELDS OF SUGAR LAND, TEXAS.</h2>
+          <p class="tt-origin__para">Sugar Land grew its first sugarcane in 1838. The same pure cane sugar grown in those fields sweetens every bottle of this tea.</p>
+          <p class="tt-origin__para">Not a flavoring. Not a syrup. The real thing &mdash; named for the place it comes from, traceable to the source.</p>
+          <p class="tt-origin__para">Brewed with organic black tea, balanced with cold-pressed lemon juice, bottled in glass. That is the entire recipe.</p>
+          <div class="tt-origin__badges">
+            <div class="tt-img-wrap tt-badge-wrap">
+              <img src="https://texastea.com/cdn/shop/files/GoTEXAN_4597e88c-4480-40de-89e5-709c4dc72de2_1.png" alt="Go Texan Certified" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+              <div class="tt-img-fallback tt-badge-fallback">Go Texan</div>
+            </div>
+            <div class="tt-img-wrap tt-badge-wrap">
+              <img src="https://texastea.com/cdn/shop/files/NONGMO_f52d87b1-a18a-4537-9e5c-7258b49fb817_1.png" alt="Non-GMO" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+              <div class="tt-img-fallback tt-badge-fallback">Non-GMO</div>
+            </div>
+            <div class="tt-img-wrap tt-badge-wrap">
+              <img src="https://texastea.com/cdn/shop/files/GLUTENFREE_2f61dc8e-5f7b-4c9b-bf3e-9da69b07110c.png" alt="Gluten Free" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+              <div class="tt-img-fallback tt-badge-fallback">Gluten Free</div>
+            </div>
+          </div>
+        </div>
+        <!-- REPLACE: Texas state SVG outline with Sugar Land location pin.
+                     Simple flat graphic — black outline on cream, red dot at Sugar Land.
+                     Do NOT generate a freehand Texas outline — use a real SVG path. -->
+        <div class="tt-origin__right">
+          <img class="tt-origin__map-img" src="https://cdn.shopify.com/s/files/1/0784/9118/9497/files/suagrlandmap.png?v=1775844970" alt="Map showing Sugar Land, Texas location" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="tt-img-fallback">SUGAR LAND, TX &mdash; MAP</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       ZONE 3.5 — CERTIFICATION PROOF SECTION
+       ================================================================ -->
+  <section class="tt-certs">
+    <div class="tt-certs__inner">
+      <div class="tt-certs__label">CERTIFIED &amp; VERIFIED</div>
+      <div class="tt-certs__grid">
+
+        <div class="tt-cert-card">
+          <div class="tt-cert-badge-wrap">
+            <div class="tt-img-wrap tt-cert-img-wrap">
+              <img src="https://texastea.com/cdn/shop/files/GoTEXAN_4597e88c-4480-40de-89e5-709c4dc72de2_1.png"
+                   alt="Go Texan Certified — Texas Department of Agriculture"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+              <div class="tt-img-fallback">GO TEXAN</div>
+            </div>
+          </div>
+          <h3 class="tt-cert-title">GO TEXAN CERTIFIED</h3>
+          <p class="tt-cert-body">Certified by the Texas Department of Agriculture. Only products made, grown, or processed in Texas earn this mark.</p>
+        </div>
+
+        <div class="tt-cert-card">
+          <div class="tt-cert-badge-wrap">
+            <div class="tt-img-wrap tt-cert-img-wrap">
+              <img src="https://texastea.com/cdn/shop/files/NONGMO_f52d87b1-a18a-4537-9e5c-7258b49fb817_1.png"
+                   alt="Non-GMO — no genetically modified ingredients"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+              <div class="tt-img-fallback">NON-GMO</div>
+            </div>
+          </div>
+          <h3 class="tt-cert-title">NON-GMO</h3>
+          <p class="tt-cert-body">No genetically modified ingredients. The cane sugar, tea, and lemon juice are what they say they are &mdash; nothing altered.</p>
+        </div>
+
+        <div class="tt-cert-card">
+          <div class="tt-cert-badge-wrap">
+            <div class="tt-img-wrap tt-cert-img-wrap">
+              <img src="https://texastea.com/cdn/shop/files/GLUTENFREE_2f61dc8e-5f7b-4c9b-bf3e-9da69b07110c.png"
+                   alt="Gluten Free — no gluten-containing ingredients"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+              <div class="tt-img-fallback">GLUTEN FREE</div>
+            </div>
+          </div>
+          <h3 class="tt-cert-title">GLUTEN FREE</h3>
+          <p class="tt-cert-body">Three ingredients. None of them contain gluten. Brewed organic black tea, cane sugar, lemon juice. That is the complete list.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       ZONE 4 — TASTE PROFILE
+       ================================================================ -->
+  <section class="tt-taste">
+    <div class="tt-taste__inner">
+      <h2 class="tt-taste__header">TASTE PROFILE</h2>
+
+      <p class="tt-taste__intro">A classic Southern sweet tea, built on single-origin organic black tea and pure cane sugar. Bright enough to cut through Texas heat, rich enough to stand up to a plate of brisket. Never cloying, never thin.</p>
+
+      <div class="tt-taste__bar-row">
+        <div class="tt-taste__bar-top">
+          <span class="tt-taste__bar-label">SWEET</span>
+          <span class="tt-taste__bar-percent">80%</span>
+        </div>
+        <div class="tt-taste__bar-track">
+          <div class="tt-taste__bar-fill tt-fill-80"></div>
+        </div>
+        <p class="tt-taste__bar-note">Pure cane sugar &mdash; forward and clean, never syrupy.</p>
+      </div>
+
+      <div class="tt-taste__bar-row">
+        <div class="tt-taste__bar-top">
+          <span class="tt-taste__bar-label">SOUR</span>
+          <span class="tt-taste__bar-percent">38%</span>
+        </div>
+        <div class="tt-taste__bar-track">
+          <div class="tt-taste__bar-fill tt-fill-38"></div>
+        </div>
+        <p class="tt-taste__bar-note">Cold-pressed lemon juice for brightness and lift.</p>
+      </div>
+
+      <div class="tt-taste__bar-row">
+        <div class="tt-taste__bar-top">
+          <span class="tt-taste__bar-label">BITTER</span>
+          <span class="tt-taste__bar-percent">20%</span>
+        </div>
+        <div class="tt-taste__bar-track">
+          <div class="tt-taste__bar-fill tt-fill-20"></div>
+        </div>
+        <p class="tt-taste__bar-note">A touch of tannin from the black tea &mdash; backbone, not bite.</p>
+      </div>
+
+      <p class="tt-taste__serving">Best served over ice. Pairs with grilled meats, smoked brisket, and long Texas afternoons.</p>
+
+      <div class="tt-taste__pairings">
+        <h3 class="tt-taste__pairings-header">GOOD WITH</h3>
+        <div class="tt-taste__pairings-grid">
+          <div class="tt-pairing-card">
+            <span class="tt-pairing-icon">F</span>
+            <span class="tt-pairing-label">BRISKET</span>
+            <span class="tt-pairing-note">Cuts through the fat, balances the char.</span>
+          </div>
+          <div class="tt-pairing-card">
+            <span class="tt-pairing-icon">F</span>
+            <span class="tt-pairing-label">FRIED CHICKEN</span>
+            <span class="tt-pairing-note">The classic pairing. Sweet on salty, every time.</span>
+          </div>
+          <div class="tt-pairing-card">
+            <span class="tt-pairing-icon">F</span>
+            <span class="tt-pairing-label">PECAN PIE</span>
+            <span class="tt-pairing-note">Tannin cuts the sweetness. A Texas dessert ritual.</span>
+          </div>
+          <div class="tt-pairing-card">
+            <span class="tt-pairing-icon">D</span>
+            <span class="tt-pairing-label">BOURBON SPLIT</span>
+            <span class="tt-pairing-note">Half tea, half bourbon, over ice. Ranch water's cousin.</span>
+          </div>
+          <div class="tt-pairing-card">
+            <span class="tt-pairing-icon">D</span>
+            <span class="tt-pairing-label">ARNOLD PALMER</span>
+            <span class="tt-pairing-note">Swap the lemonade. Still an Arnold Palmer, only sharper.</span>
+          </div>
+          <div class="tt-pairing-card">
+            <span class="tt-pairing-icon">D</span>
+            <span class="tt-pairing-label">ICE &amp; MINT</span>
+            <span class="tt-pairing-note">Crushed ice, fresh mint, nothing else. The purest form.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       ZONE 5 — REVIEWS
+       ================================================================ -->
+  <section class="tt-reviews" id="reviews">
+    <h2 class="tt-reviews-header">WHAT PEOPLE ARE SAYING</h2>
+
+    <div class="tt-reviews-carousel">
+      <button type="button" class="tt-rev-arrow tt-rev-arrow-prev" id="tt-rev-prev" aria-label="Previous reviews">
+        <i data-lucide="chevron-left"></i>
+      </button>
+
+      <div class="tt-reviews-viewport">
+        <div class="tt-reviews-track" id="tt-reviews-track">
+
+          <article class="tt-review-card">
+            <div class="tt-reviewer-top">
+              <div class="tt-reviewer-photo">
+                <span class="tt-reviewer-initials">MT</span>
+              </div>
+            </div>
+            <div class="tt-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="tt-review-text">"Bold, clean tea that tastes rich and refreshing, not thin or watery. This is the real thing."</p>
+            <div class="tt-review-meta">
+              <span class="tt-review-author">MICHAEL T.  &middot;  NASHVILLE, TN</span>
+              <span class="tt-review-badge">VERIFIED BUYER</span>
+            </div>
+          </article>
+
+          <article class="tt-review-card">
+            <div class="tt-reviewer-top">
+              <div class="tt-reviewer-photo">
+                <span class="tt-reviewer-initials">SK</span>
+              </div>
+            </div>
+            <div class="tt-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="tt-review-text">"This one is actually made in Texas instead of New Jersey. You can tell from the first sip."</p>
+            <div class="tt-review-meta">
+              <span class="tt-review-author">SARAH K.  &middot;  DENVER, CO</span>
+              <span class="tt-review-badge">VERIFIED BUYER</span>
+            </div>
+          </article>
+
+          <article class="tt-review-card">
+            <div class="tt-reviewer-top">
+              <div class="tt-reviewer-photo">
+                <span class="tt-reviewer-initials">JR</span>
+              </div>
+            </div>
+            <div class="tt-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="tt-review-text">"The sweetness is obviously pure cane sugar. Almost gritty and I mean that in the best possible way."</p>
+            <div class="tt-review-meta">
+              <span class="tt-review-author">JAMES R.  &middot;  AUSTIN, TX</span>
+              <span class="tt-review-badge">VERIFIED BUYER</span>
+              <span class="tt-texan-badge">TEXAN</span>
+            </div>
+          </article>
+
+          <article class="tt-review-card">
+            <div class="tt-reviewer-top">
+              <div class="tt-reviewer-photo">
+                <span class="tt-reviewer-initials">LP</span>
+              </div>
+            </div>
+            <div class="tt-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="tt-review-text">"I was raised on sweet tea in Georgia and this one holds its own. Genuinely brewed, not a flavoring."</p>
+            <div class="tt-review-meta">
+              <span class="tt-review-author">LINDA P.  &middot;  ATLANTA, GA</span>
+              <span class="tt-review-badge">VERIFIED BUYER</span>
+            </div>
+          </article>
+
+          <article class="tt-review-card">
+            <div class="tt-reviewer-top">
+              <div class="tt-reviewer-photo">
+                <span class="tt-reviewer-initials">RW</span>
+              </div>
+            </div>
+            <div class="tt-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="tt-review-text">"Grew up in Sugar Land. This tastes like the sugar I knew as a kid &mdash; the real Imperial stuff."</p>
+            <div class="tt-review-meta">
+              <span class="tt-review-author">RAY W.  &middot;  HOUSTON, TX</span>
+              <span class="tt-review-badge">VERIFIED BUYER</span>
+              <span class="tt-texan-badge">TEXAN</span>
+            </div>
+          </article>
+
+          <article class="tt-review-card">
+            <div class="tt-reviewer-top">
+              <div class="tt-reviewer-photo">
+                <span class="tt-reviewer-initials">AM</span>
+              </div>
+            </div>
+            <div class="tt-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="tt-review-text">"Finally a bottled tea that isn't loaded with corn syrup. The glass bottle is a nice touch, too."</p>
+            <div class="tt-review-meta">
+              <span class="tt-review-author">ANNA M.  &middot;  PORTLAND, OR</span>
+              <span class="tt-review-badge">VERIFIED BUYER</span>
+            </div>
+          </article>
+
+          <article class="tt-review-card">
+            <div class="tt-reviewer-top">
+              <div class="tt-reviewer-photo">
+                <span class="tt-reviewer-initials">CT</span>
+              </div>
+            </div>
+            <div class="tt-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="tt-review-text">"Packs in the cooler for tailgates. The bottle is heavy in the best way &mdash; you feel the quality."</p>
+            <div class="tt-review-meta">
+              <span class="tt-review-author">CARLOS T.  &middot;  SAN ANTONIO, TX</span>
+              <span class="tt-review-badge">VERIFIED BUYER</span>
+              <span class="tt-texan-badge">TEXAN</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <button type="button" class="tt-rev-arrow tt-rev-arrow-next" id="tt-rev-next" aria-label="Next reviews">
+        <i data-lucide="chevron-right"></i>
+      </button>
+    </div>
+
+    <div class="tt-reviews-dots" id="tt-reviews-dots" aria-hidden="true"></div>
+  </section>
+
+  <!-- ================================================================
+       ZONE 7 — CROSS-SELL
+       ================================================================ -->
+  <section class="tt-cross">
+    <h2 class="tt-cross-header">MORE FROM TEXAS TEA</h2>
+    <p class="tt-cross-sub">Every SKU named for the place it comes from.</p>
+    <div class="tt-cross-grid">
+      <article class="tt-cross-card">
+        <div class="tt-cross-img">
+          <!-- REPLACE: Poteet Strawberry White Tea product shot -->
+          <div class="tt-img-wrap">
+            <img src="https://texastea.com/cdn/shop/files/Poteet_Strawberry_White_Tea.png" alt="Poteet Strawberry White Tea — 12-pack glass bottles" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+            <div class="tt-img-fallback">Poteet Strawberry White Tea &mdash; 12-pack glass bottles</div>
+          </div>
+        </div>
+        <div class="tt-cross-content">
+          <div class="tt-cross-location">POTEET, TX</div>
+          <h3 class="tt-cross-name">Poteet Strawberry White Tea</h3>
+          <div class="tt-cross-price">$20.99 / case</div>
+          <div class="tt-cross-flavor">
+            <div class="tt-cross-flavor-row">
+              <span class="tt-cross-flavor-label">SWEET</span>
+              <div class="tt-cross-flavor-dots">
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-empty"></span>
+                <span class="tt-dot tt-dot-empty"></span>
+              </div>
+            </div>
+            <div class="tt-cross-flavor-row">
+              <span class="tt-cross-flavor-label">FRUITY</span>
+              <div class="tt-cross-flavor-dots">
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="tt-cross-cta">ADD TO CART</button>
+        </div>
+      </article>
+      <article class="tt-cross-card">
+        <div class="tt-cross-img">
+          <!-- REPLACE: Fredericksburg Peach Lemonade product shot -->
+          <div class="tt-img-wrap">
+            <img src="https://texastea.com/cdn/shop/files/FredericksburgPeachLemonade_916caf3b-87d9-4d2d-94a8-ad5e65d730e2.png" alt="Fredericksburg Peach Lemonade — 12-pack glass bottles" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+            <div class="tt-img-fallback">Fredericksburg Peach Lemonade &mdash; 12-pack glass bottles</div>
+          </div>
+        </div>
+        <div class="tt-cross-content">
+          <div class="tt-cross-location">FREDERICKSBURG, TX</div>
+          <h3 class="tt-cross-name">Fredericksburg Peach Lemonade</h3>
+          <div class="tt-cross-price">$25.99 / case</div>
+          <div class="tt-cross-flavor">
+            <div class="tt-cross-flavor-row">
+              <span class="tt-cross-flavor-label">SWEET</span>
+              <div class="tt-cross-flavor-dots">
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-empty"></span>
+              </div>
+            </div>
+            <div class="tt-cross-flavor-row">
+              <span class="tt-cross-flavor-label">CITRUS</span>
+              <div class="tt-cross-flavor-dots">
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-empty"></span>
+                <span class="tt-dot tt-dot-empty"></span>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="tt-cross-cta">ADD TO CART</button>
+        </div>
+      </article>
+      <article class="tt-cross-card">
+        <div class="tt-cross-img">
+          <!-- REPLACE: RGV Texas Style Half & Half product shot -->
+          <div class="tt-img-wrap">
+            <img src="https://texastea.com/cdn/shop/files/RGVTexasStyleHalf_Half.png" alt="RGV Texas Style Half & Half — 12-pack glass bottles" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+            <div class="tt-img-fallback">RGV Texas Style Half &amp; Half &mdash; 12-pack glass bottles</div>
+          </div>
+        </div>
+        <div class="tt-cross-content">
+          <div class="tt-cross-location">RIO GRANDE VALLEY, TX</div>
+          <h3 class="tt-cross-name">RGV Texas Style Half &amp; Half</h3>
+          <div class="tt-cross-price">$20.99 / case</div>
+          <div class="tt-cross-flavor">
+            <div class="tt-cross-flavor-row">
+              <span class="tt-cross-flavor-label">SWEET</span>
+              <div class="tt-cross-flavor-dots">
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-empty"></span>
+                <span class="tt-dot tt-dot-empty"></span>
+              </div>
+            </div>
+            <div class="tt-cross-flavor-row">
+              <span class="tt-cross-flavor-label">CITRUS</span>
+              <div class="tt-cross-flavor-dots">
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-empty"></span>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="tt-cross-cta">ADD TO CART</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       ZONE 8 — STICKY ATC BAR (mobile only, JS-driven)
+       ================================================================ -->
+  <div class="tt-sticky" id="sticky-atc">
+    <div class="tt-sticky-left">
+      <span class="tt-sticky-name">SUGAR LAND SWEET TEA</span>
+      <span class="tt-sticky-price" id="tt-sticky-price">$17.99 / case</span>
+    </div>
+    <button type="button" class="tt-sticky-cta" id="tt-sticky-cta">LOCK IN MY FOUNDING RATE &rarr;</button>
+  </div>
+
+  <!-- ================================================================
+       JAVASCRIPT
+       ================================================================ -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+      // ============================================
+      // 1. GALLERY THUMBNAILS
+      // ============================================
+      var thumbs = document.querySelectorAll('.tt-thumb');
+      var leadImg = document.getElementById('tt-lead-img');
+      var leadImgWrap = leadImg ? leadImg.parentElement : null;
+      var leadPlaceholder = document.getElementById('tt-lead-placeholder');
+
+      if (thumbs && thumbs.length) {
+        thumbs.forEach(function (thumb) {
+          thumb.addEventListener('click', function () {
+            var src = thumb.getAttribute('data-src');
+            var isLifestyle = thumb.classList.contains('tt-thumb-lifestyle');
+
+            if (isLifestyle) {
+              if (leadImgWrap) leadImgWrap.style.display = 'none';
+              if (leadPlaceholder) leadPlaceholder.style.display = 'flex';
+            } else {
+              if (leadImg && src) {
+                leadImg.src = src;
+                leadImg.style.display = '';
+                // reset any prior onerror-triggered fallback visibility
+                var fb = leadImg.nextElementSibling;
+                if (fb && fb.classList && fb.classList.contains('tt-img-fallback')) {
+                  fb.style.display = 'none';
+                }
+              }
+              if (leadImgWrap) leadImgWrap.style.display = '';
+              if (leadPlaceholder) leadPlaceholder.style.display = 'none';
+            }
+
+            thumbs.forEach(function (t) { t.classList.remove('tt-thumb-active'); });
+            thumb.classList.add('tt-thumb-active');
+          });
+        });
+      }
+
+      // ============================================
+      // 2. SUBSCRIPTION CARD TOGGLE
+      // ============================================
+      var cardA = document.getElementById('tt-card-a');
+      var cardB = document.getElementById('tt-card-b');
+      var radioOnce = document.getElementById('radio-once');
+      var radioSub = document.getElementById('radio-sub');
+      var cadence = document.getElementById('tt-cadence');
+      var mainCta = document.getElementById('tt-main-cta');
+      var stickyPrice = document.getElementById('tt-sticky-price');
+      var stickyCta = document.getElementById('tt-sticky-cta');
+
+      function selectCardA(e) {
+        if (cardA) cardA.classList.add('tt-card-selected');
+        if (cardB) {
+          cardB.classList.remove('tt-card-selected');
+          cardB.classList.add('tt-card-b-unselected');
+        }
+        if (radioOnce) radioOnce.checked = true;
+        if (cadence) cadence.style.display = 'none';
+        if (mainCta) {
+          mainCta.classList.add('tt-cta-once');
+          mainCta.textContent = 'ADD TO CART  \u2014  $23.99';
+        }
+        if (stickyPrice) stickyPrice.textContent = '$23.99 / case';
+        if (stickyCta) {
+          stickyCta.classList.add('tt-sticky-cta-once');
+          stickyCta.textContent = 'ADD TO CART \u2014 $23.99';
+        }
+      }
+
+      function selectCardB(e) {
+        if (cardA) cardA.classList.remove('tt-card-selected');
+        if (cardB) cardB.classList.remove('tt-card-b-unselected');
+        if (radioSub) radioSub.checked = true;
+        if (cadence) cadence.style.display = '';
+        if (mainCta) {
+          mainCta.classList.remove('tt-cta-once');
+          mainCta.textContent = 'LOCK IN MY FOUNDING RATE  \u2192';
+        }
+        if (stickyPrice) stickyPrice.textContent = '$17.99 / case';
+        if (stickyCta) {
+          stickyCta.classList.remove('tt-sticky-cta-once');
+          stickyCta.textContent = 'LOCK IN MY FOUNDING RATE \u2192';
+        }
+      }
+
+      if (cardA) cardA.addEventListener('click', selectCardA);
+      if (cardB) cardB.addEventListener('click', selectCardB);
+
+      // ============================================
+      // 3. CADENCE PILL SELECTOR
+      // ============================================
+      var pills = document.querySelectorAll('.tt-pill');
+      if (pills && pills.length) {
+        pills.forEach(function (pill) {
+          pill.addEventListener('click', function (e) {
+            e.stopPropagation();
+            pills.forEach(function (p) { p.classList.remove('tt-pill-selected'); });
+            pill.classList.add('tt-pill-selected');
+          });
+        });
+      }
+
+      // ============================================
+      // ACCORDION TOGGLE
+      // ============================================
+      var accTriggers = document.querySelectorAll('.tt-acc-trigger');
+      if (accTriggers && accTriggers.length) {
+        accTriggers.forEach(function(trigger) {
+          trigger.addEventListener('click', function() {
+            var accordion = trigger.closest('.tt-accordion');
+            var bodyId = trigger.getAttribute('aria-controls');
+            var body = document.getElementById(bodyId);
+            var isOpen = accordion.classList.contains('tt-acc-open');
+            if (isOpen) {
+              accordion.classList.remove('tt-acc-open');
+              trigger.setAttribute('aria-expanded', 'false');
+              if (body) body.setAttribute('hidden', '');
+            } else {
+              accordion.classList.add('tt-acc-open');
+              trigger.setAttribute('aria-expanded', 'true');
+              if (body) body.removeAttribute('hidden');
+            }
+          });
+        });
+      }
+
+      // ============================================
+      // 4. STICKY ATC INTERSECTION OBSERVER
+      // ============================================
+      var buyBox = document.getElementById('buy-box');
+      var stickyBar = document.getElementById('sticky-atc');
+      if (buyBox && stickyBar) {
+        var observer = new IntersectionObserver(
+          function (entries) {
+            var entry = entries[0];
+            if (window.innerWidth <= 768) {
+              stickyBar.style.display = entry.isIntersecting ? 'none' : 'flex';
+            } else {
+              stickyBar.style.display = 'none';
+            }
+          },
+          { threshold: 0 }
+        );
+        observer.observe(buyBox);
+        window.addEventListener('resize', function () {
+          if (window.innerWidth > 768) stickyBar.style.display = 'none';
+        });
+      }
+
+      // ============================================
+      // 5. LUCIDE ICONS
+      // ============================================
+      if (window.lucide && typeof window.lucide.createIcons === 'function') {
+        window.lucide.createIcons();
+      }
+
+      // ============================================
+      // 6. REVIEWS CAROUSEL
+      // ============================================
+      (function initReviewsCarousel() {
+        var track = document.getElementById('tt-reviews-track');
+        var prevBtn = document.getElementById('tt-rev-prev');
+        var nextBtn = document.getElementById('tt-rev-next');
+        var dotsHost = document.getElementById('tt-reviews-dots');
+        if (!track) return;
+
+        var cards = track.querySelectorAll('.tt-review-card');
+        var total = cards.length;
+        var index = 0;
+        var autoTimer = null;
+        var GAP = 20;
+
+        function getVisibleCount() {
+          var w = window.innerWidth;
+          if (w <= 768) return 1;
+          if (w <= 1024) return 2;
+          return 3;
+        }
+
+        function getPageCount() {
+          var v = getVisibleCount();
+          var pages = total - v + 1;
+          return pages > 0 ? pages : 1;
+        }
+
+        function renderDots() {
+          if (!dotsHost) return;
+          dotsHost.innerHTML = '';
+          var pages = getPageCount();
+          for (var i = 0; i < pages; i++) {
+            var d = document.createElement('button');
+            d.type = 'button';
+            d.className = 'tt-reviews-dot' + (i === index ? ' tt-reviews-dot-active' : '');
+            d.setAttribute('aria-label', 'Go to review page ' + (i + 1));
+            (function (i) {
+              d.addEventListener('click', function () {
+                index = i;
+                update();
+                restartAuto();
+              });
+            })(i);
+            dotsHost.appendChild(d);
+          }
+        }
+
+        function update() {
+          if (!cards.length) return;
+          var card = cards[0];
+          var cardWidth = card.getBoundingClientRect().width;
+          var shift = index * (cardWidth + GAP);
+          track.style.transform = 'translateX(-' + shift + 'px)';
+          var ds = dotsHost ? dotsHost.querySelectorAll('.tt-reviews-dot') : [];
+          for (var i = 0; i < ds.length; i++) {
+            if (i === index) ds[i].classList.add('tt-reviews-dot-active');
+            else ds[i].classList.remove('tt-reviews-dot-active');
+          }
+        }
+
+        function next() {
+          var pages = getPageCount();
+          index = (index + 1) % pages;
+          update();
+        }
+        function prev() {
+          var pages = getPageCount();
+          index = (index - 1 + pages) % pages;
+          update();
+        }
+
+        function startAuto() {
+          stopAuto();
+          autoTimer = setInterval(next, 4000);
+        }
+        function stopAuto() {
+          if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+        }
+        function restartAuto() { startAuto(); }
+
+        if (nextBtn) nextBtn.addEventListener('click', function () { next(); restartAuto(); });
+        if (prevBtn) prevBtn.addEventListener('click', function () { prev(); restartAuto(); });
+
+        var carousel = track.closest('.tt-reviews-carousel');
+        if (carousel) {
+          carousel.addEventListener('mouseenter', stopAuto);
+          carousel.addEventListener('mouseleave', startAuto);
+        }
+
+        window.addEventListener('resize', function () {
+          var pages = getPageCount();
+          if (index >= pages) index = pages - 1;
+          renderDots();
+          update();
+        });
+
+        renderDots();
+        update();
+        startAuto();
+      })();
+
+      // ============================================
+      // 7. TEXAS STORY CARD MODAL
+      // ============================================
+      var storyOpen = document.getElementById('tt-story-preview-btn');
+      var storyModal = document.getElementById('tt-story-modal');
+      var storyClose = document.getElementById('tt-story-close');
+      var storyBackdrop = storyModal ? storyModal.querySelector('.tt-story-backdrop') : null;
+
+      function openStoryModal() {
+        if (!storyModal) return;
+        storyModal.classList.add('tt-story-open');
+        storyModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeStoryModal() {
+        if (!storyModal) return;
+        storyModal.classList.remove('tt-story-open');
+        storyModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+      if (storyOpen) storyOpen.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        openStoryModal();
+      });
+      if (storyClose) storyClose.addEventListener('click', closeStoryModal);
+      if (storyBackdrop) storyBackdrop.addEventListener('click', closeStoryModal);
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && storyModal && storyModal.classList.contains('tt-story-open')) {
+          closeStoryModal();
+        }
+      });
+    });
+  </script>
+
+  <!-- ================================================================
+       TEXAS STORY CARD — MODAL PREVIEW
+       ================================================================ -->
+  <div class="tt-story-modal" id="tt-story-modal" aria-hidden="true" role="dialog" aria-labelledby="tt-story-title">
+    <div class="tt-story-backdrop"></div>
+    <div class="tt-story-dialog">
+      <button type="button" class="tt-story-close" id="tt-story-close" aria-label="Close story card preview">
+        <i data-lucide="x"></i>
+      </button>
+
+      <div class="tt-postcard">
+        <div class="tt-postcard__stamp">
+          <div class="tt-postcard__stamp-frame">
+            <div class="tt-postcard__stamp-state">TX</div>
+            <div class="tt-postcard__stamp-val">FOUNDED 1838</div>
+          </div>
+        </div>
+
+        <div class="tt-postcard__ribbon">THE TEXAS STORY CARD</div>
+
+        <h2 class="tt-postcard__title" id="tt-story-title">SUGAR LAND, TX</h2>
+        <div class="tt-postcard__sub">POPULATION 118,488 &middot; FORT BEND COUNTY</div>
+
+        <div class="tt-postcard__divider"></div>
+
+        <p class="tt-postcard__body">Sugar Land got its name the honest way &mdash; it was built on sugarcane. In 1838, Samuel May Williams planted the first fields here. By the 1900s, the Imperial Sugar refinery towered over the town and stamped its name into every bag of pure cane sugar shipped from Texas.</p>
+
+        <p class="tt-postcard__body">That same pure cane sugar &mdash; from the fields that gave Sugar Land its name &mdash; sweetens every bottle of this tea. Not a syrup. Not a flavoring. The real thing, traceable to the source.</p>
+
+        <div class="tt-postcard__facts">
+          <div class="tt-postcard__fact">
+            <div class="tt-postcard__fact-label">FOUNDED</div>
+            <div class="tt-postcard__fact-val">1838</div>
+          </div>
+          <div class="tt-postcard__fact">
+            <div class="tt-postcard__fact-label">REFINERY</div>
+            <div class="tt-postcard__fact-val">IMPERIAL SUGAR</div>
+          </div>
+          <div class="tt-postcard__fact">
+            <div class="tt-postcard__fact-label">CROP</div>
+            <div class="tt-postcard__fact-val">PURE CANE</div>
+          </div>
+        </div>
+
+        <div class="tt-postcard__divider"></div>
+
+        <div class="tt-postcard__foot">
+          <div class="tt-postcard__foot-left">
+            <div class="tt-postcard__foot-label">SHIPPED WITH YOUR FIRST CASE</div>
+            <div class="tt-postcard__foot-sub">Each SKU ships with its own card. Never repeated.</div>
+          </div>
+          <div class="tt-postcard__foot-mark">TX &middot; 1838</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
