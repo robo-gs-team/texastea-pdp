@@ -60,8 +60,8 @@
     button { font-family: inherit; }
     a { color: inherit; }
 
-    /* Reserve space at bottom of page so sticky ATC bar never covers content on mobile */
-    body.tt-has-sticky-offset { padding-bottom: 64px; }
+    /* Reserve space at bottom of page so sticky ATC bar never covers content */
+    body.tt-has-sticky-offset { padding-bottom: 92px; }
 
     /* Labels used as cards must be block so they fill grid cells */
     label.tt-card-a,
@@ -152,7 +152,7 @@
       margin: 0 auto;
       padding: 48px 20px;
       display: grid;
-      grid-template-columns: 38% 62%;
+      grid-template-columns: 42% 58%;
       gap: 36px;
       align-items: start;
     }
@@ -738,9 +738,25 @@
       padding: 60px 20px;
       width: 100%;
     }
-    .tt-proof__grid {
+    .tt-proof__inner {
       max-width: var(--container);
       margin: 0 auto;
+    }
+    .tt-proof__title {
+      font: 800 13px/1 var(--font-body);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--red);
+      text-align: center;
+      margin: 0 0 8px 0;
+    }
+    .tt-proof__title-rule {
+      width: 40px;
+      height: 2px;
+      background: var(--red);
+      margin: 0 auto 36px auto;
+    }
+    .tt-proof__grid {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
     }
@@ -1252,52 +1268,119 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: var(--black);
-      height: 64px;
-      padding: 0 16px;
-      align-items: center;
-      justify-content: space-between;
+      background: var(--cream);
       z-index: 9999;
-      border-top: 2px solid var(--white);
+      border-top: var(--border-heavy);
+      box-shadow: 0 -4px 0 rgba(13, 13, 13, 0.08);
       display: none;
       box-sizing: border-box;
     }
-    .tt-sticky-left {
+    .tt-sticky-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      box-sizing: border-box;
+    }
+    .tt-sticky-product {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+    .tt-sticky-thumb {
+      width: 56px;
+      height: 56px;
+      background: var(--white);
+      border: var(--border-std);
+      border-radius: var(--radius);
+      padding: 4px;
+      box-sizing: border-box;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .tt-sticky-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .tt-sticky-info {
       display: flex;
       flex-direction: column;
       justify-content: center;
+      min-width: 0;
     }
     .tt-sticky-name {
       font-family: var(--font-display);
-      font-size: 13px;
-      font-weight: 700;
+      font-size: 14px;
+      font-weight: 800;
       text-transform: uppercase;
-      color: var(--white);
+      color: var(--black);
       letter-spacing: 0.02em;
+      line-height: 1.1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
-    .tt-sticky-price {
+    .tt-sticky-variant {
+      font-family: var(--font-body);
+      font-size: 11px;
+      color: var(--grey-mid);
+      margin-top: 3px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .tt-sticky-plan {
+      flex: 0 0 auto;
+      padding: 10px 16px;
+      border: var(--border-std);
+      border-radius: var(--radius);
+      background: var(--white);
       font-family: var(--font-body);
       font-size: 12px;
-      color: var(--gold);
-      margin-top: 2px;
+      font-weight: 700;
+      color: var(--black);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+    .tt-sticky-plan b {
+      color: var(--red);
+      margin-left: 4px;
     }
     .tt-sticky-cta {
-      height: 44px;
-      padding: 0 16px;
-      border-radius: 0;
-      border: none;
+      flex: 0 0 auto;
+      height: 52px;
+      padding: 0 28px;
+      border-radius: var(--radius);
+      border: 2px solid var(--black);
       cursor: pointer;
       background: var(--red);
       color: var(--white);
       font-family: var(--font-display);
-      font-size: 13px;
-      font-weight: 700;
+      font-size: 14px;
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.04em;
+      box-shadow: 4px 4px 0 var(--black);
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+    }
+    .tt-sticky-cta:hover {
+      transform: translate(1px, 1px);
+      box-shadow: 3px 3px 0 var(--black);
+    }
+    .tt-sticky-cta:active {
+      transform: translate(4px, 4px);
+      box-shadow: 0 0 0 var(--black);
     }
     .tt-sticky-cta.tt-sticky-cta-once {
-      background: var(--white);
-      color: var(--black);
+      background: var(--black);
+      color: var(--white);
     }
 
     /* ================================================================
@@ -1388,6 +1471,18 @@
       align-items: center;
       justify-content: space-between;
     }
+    .tt-flavor-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .tt-flavor-icon {
+      width: 16px;
+      height: 16px;
+      color: var(--red);
+      stroke-width: 2.25;
+      flex-shrink: 0;
+    }
     .tt-flavor-label {
       font-family: var(--font-display);
       font-size: 13px;
@@ -1395,7 +1490,7 @@
       text-transform: uppercase;
       letter-spacing: 0.06em;
       color: var(--black);
-      min-width: 60px;
+      min-width: 52px;
     }
     .tt-flavor-dots {
       display: flex;
@@ -1505,6 +1600,7 @@
       height: 180px;
       overflow: hidden;
       position: relative;
+      border-radius: 9px;
     }
     .tt-proof__real-img {
       width: 180px;
@@ -1512,12 +1608,14 @@
       object-fit: cover;
       object-position: center;
       display: block;
+      border-radius: 9px;
     }
     .tt-proof__img-placeholder {
       width: 180px;
       height: 180px;
       background: #1A1A1A;
       border: 2px solid #333333;
+      border-radius: 9px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1892,7 +1990,24 @@
        ================================================================ */
     @media (max-width: 768px) {
       /* Global */
-      body.tt-has-sticky-offset { padding-bottom: 64px; }
+      body.tt-has-sticky-offset { padding-bottom: 84px; }
+
+      /* Sticky ATC — compact mobile layout */
+      .tt-sticky-inner {
+        padding: 10px 14px;
+        gap: 12px;
+      }
+      .tt-sticky-product { gap: 10px; }
+      .tt-sticky-thumb { width: 48px; height: 48px; }
+      .tt-sticky-name { font-size: 12px; }
+      .tt-sticky-variant { display: none; }
+      .tt-sticky-plan { display: none; }
+      .tt-sticky-cta {
+        height: 44px;
+        padding: 0 16px;
+        font-size: 12px;
+        box-shadow: 3px 3px 0 var(--black);
+      }
 
       /* Trust bar */
       .tt-trust-bar {
@@ -2114,14 +2229,17 @@
         <div class="tt-desc-flavor-row">
           <div class="tt-product-desc">
             <p class="tt-desc-tagline">Bold. Classic. Pure Texas Sweetness.</p>
-            <p class="tt-desc-body">Sugar Land Sweet Tea is brewed with single-origin organic black tea, balanced with cold-pressed lemon juice, and sweetened with pure cane sugar from the very fields that gave Sugar Land its name. Three ingredients. Glass bottled. No corn syrup, no flavorings, no shortcuts.</p>
+            <p class="tt-desc-body">Single-origin organic black tea, cold-pressed lemon, and pure cane sugar from the fields that named Sugar Land. Glass bottled. No corn syrup, no shortcuts.</p>
           </div>
 
           <div class="tt-flavor-profile">
             <div class="tt-flavor-header">FLAVOR PROFILE</div>
             <div class="tt-flavor-grid">
               <div class="tt-flavor-row">
-                <span class="tt-flavor-label">SWEET</span>
+                <div class="tt-flavor-left">
+                  <i data-lucide="candy" class="tt-flavor-icon"></i>
+                  <span class="tt-flavor-label">SWEET</span>
+                </div>
                 <div class="tt-flavor-dots">
                   <span class="tt-dot tt-dot-filled"></span>
                   <span class="tt-dot tt-dot-filled"></span>
@@ -2131,7 +2249,10 @@
                 </div>
               </div>
               <div class="tt-flavor-row">
-                <span class="tt-flavor-label">SOUR</span>
+                <div class="tt-flavor-left">
+                  <i data-lucide="citrus" class="tt-flavor-icon"></i>
+                  <span class="tt-flavor-label">SOUR</span>
+                </div>
                 <div class="tt-flavor-dots">
                   <span class="tt-dot tt-dot-filled"></span>
                   <span class="tt-dot tt-dot-empty"></span>
@@ -2141,7 +2262,10 @@
                 </div>
               </div>
               <div class="tt-flavor-row">
-                <span class="tt-flavor-label">SALTY</span>
+                <div class="tt-flavor-left">
+                  <i data-lucide="sparkles" class="tt-flavor-icon"></i>
+                  <span class="tt-flavor-label">SALTY</span>
+                </div>
                 <div class="tt-flavor-dots">
                   <span class="tt-dot tt-dot-filled"></span>
                   <span class="tt-dot tt-dot-empty"></span>
@@ -2347,7 +2471,10 @@
        ZONE 2 — NAMED INGREDIENT PROOF BAR
        ================================================================ -->
   <section class="tt-proof">
-    <div class="tt-proof__grid">
+    <div class="tt-proof__inner">
+      <h2 class="tt-proof__title">INGREDIENTS</h2>
+      <div class="tt-proof__title-rule"></div>
+      <div class="tt-proof__grid">
       <div class="tt-proof__col tt-proof__col--1">
         <div class="tt-proof__img-wrap">
           <img class="tt-proof__real-img" src="https://cdn.shopify.com/s/files/1/0784/9118/9497/files/canesugar.png?v=1775844969" alt="Pure cane sugar crystals" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
@@ -2377,6 +2504,7 @@
         </div>
         <h3 class="tt-proof__header">REAL LEMON JUICE</h3>
         <p class="tt-proof__body">Cold-pressed, not from concentrate</p>
+      </div>
       </div>
     </div>
   </section>
@@ -2804,14 +2932,22 @@
   </section>
 
   <!-- ================================================================
-       ZONE 8 — STICKY ATC BAR (mobile only, JS-driven)
+       ZONE 8 — STICKY ATC BAR (desktop + mobile, JS-driven)
        ================================================================ -->
   <div class="tt-sticky" id="sticky-atc">
-    <div class="tt-sticky-left">
-      <span class="tt-sticky-name">SUGAR LAND SWEET TEA</span>
-      <span class="tt-sticky-price" id="tt-sticky-price">$17.99 / case</span>
+    <div class="tt-sticky-inner">
+      <div class="tt-sticky-product">
+        <div class="tt-sticky-thumb">
+          <img src="https://texastea.com/cdn/shop/files/SugarLandSweetTea_8edc5f1b-5f9a-4bdc-8be4-91ebb63caaf2.png" alt="Sugar Land Sweet Tea" onerror="this.style.display='none';">
+        </div>
+        <div class="tt-sticky-info">
+          <span class="tt-sticky-name">Sugar Land Sweet Tea</span>
+          <span class="tt-sticky-variant">12 &times; 16oz glass bottles</span>
+        </div>
+      </div>
+      <div class="tt-sticky-plan" id="tt-sticky-plan"><span id="tt-sticky-plan-label">Subscribe &amp; Save</span> <b id="tt-sticky-price">$17.99 / case</b></div>
+      <button type="button" class="tt-sticky-cta" id="tt-sticky-cta">ADD TO CART &rarr;</button>
     </div>
-    <button type="button" class="tt-sticky-cta" id="tt-sticky-cta">LOCK IN MY FOUNDING RATE &rarr;</button>
   </div>
 
   <!-- ================================================================
@@ -2867,7 +3003,7 @@
       var cadence = document.getElementById('tt-cadence');
       var mainCta = document.getElementById('tt-main-cta');
       var stickyPrice = document.getElementById('tt-sticky-price');
-      var stickyCta = document.getElementById('tt-sticky-cta');
+      var stickyPlanLabel = document.getElementById('tt-sticky-plan-label');
 
       function selectCardA(e) {
         if (cardA) cardA.classList.add('tt-card-selected');
@@ -2881,11 +3017,8 @@
           mainCta.classList.add('tt-cta-once');
           mainCta.textContent = 'ADD TO CART  \u2014  $23.99';
         }
+        if (stickyPlanLabel) stickyPlanLabel.textContent = 'One-time';
         if (stickyPrice) stickyPrice.textContent = '$23.99 / case';
-        if (stickyCta) {
-          stickyCta.classList.add('tt-sticky-cta-once');
-          stickyCta.textContent = 'ADD TO CART \u2014 $23.99';
-        }
       }
 
       function selectCardB(e) {
@@ -2897,11 +3030,8 @@
           mainCta.classList.remove('tt-cta-once');
           mainCta.textContent = 'LOCK IN MY FOUNDING RATE  \u2192';
         }
+        if (stickyPlanLabel) stickyPlanLabel.textContent = 'Subscribe & Save';
         if (stickyPrice) stickyPrice.textContent = '$17.99 / case';
-        if (stickyCta) {
-          stickyCta.classList.remove('tt-sticky-cta-once');
-          stickyCta.textContent = 'LOCK IN MY FOUNDING RATE \u2192';
-        }
       }
 
       if (cardA) cardA.addEventListener('click', selectCardA);
@@ -2946,7 +3076,7 @@
       }
 
       // ============================================
-      // 4. STICKY ATC INTERSECTION OBSERVER
+      // 4. STICKY ATC INTERSECTION OBSERVER (desktop + mobile)
       // ============================================
       var buyBox = document.getElementById('buy-box');
       var stickyBar = document.getElementById('sticky-atc');
@@ -2954,18 +3084,11 @@
         var observer = new IntersectionObserver(
           function (entries) {
             var entry = entries[0];
-            if (window.innerWidth <= 768) {
-              stickyBar.style.display = entry.isIntersecting ? 'none' : 'flex';
-            } else {
-              stickyBar.style.display = 'none';
-            }
+            stickyBar.style.display = entry.isIntersecting ? 'none' : 'block';
           },
           { threshold: 0 }
         );
         observer.observe(buyBox);
-        window.addEventListener('resize', function () {
-          if (window.innerWidth > 768) stickyBar.style.display = 'none';
-        });
       }
 
       // ============================================
