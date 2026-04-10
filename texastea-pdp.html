@@ -317,7 +317,7 @@
     }
     .tt-plan-cards {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 12px;
       align-items: start;
     }
@@ -1140,6 +1140,321 @@
     }
 
     /* ================================================================
+       FLAVOR PROFILE DOTS — buy box insert
+       ================================================================ */
+    .tt-flavor-profile {
+      margin-bottom: 20px;
+      padding: 16px 0;
+      border-top: var(--border-std);
+      border-bottom: var(--border-std);
+    }
+    .tt-flavor-header {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--grey-mid);
+      margin-bottom: 12px;
+    }
+    .tt-flavor-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .tt-flavor-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .tt-flavor-label {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--black);
+      min-width: 60px;
+    }
+    .tt-flavor-dots {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+    .tt-dot {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .tt-dot-filled {
+      background: var(--black);
+      border: 2px solid var(--black);
+    }
+    .tt-dot-empty {
+      background: transparent;
+      border: 2px solid var(--black);
+    }
+
+    /* ================================================================
+       ACCORDIONS
+       ================================================================ */
+    .tt-accordions {
+      border-top: var(--border-std);
+      margin-top: 20px;
+      margin-bottom: 0;
+    }
+    .tt-accordion {
+      border-bottom: var(--border-std);
+    }
+    .tt-acc-trigger {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 14px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      text-align: left;
+    }
+    .tt-acc-label {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--black);
+    }
+    .tt-acc-icon {
+      width: 16px;
+      height: 16px;
+      color: var(--black);
+      flex-shrink: 0;
+      transition: transform 0.2s ease;
+    }
+    .tt-accordion.tt-acc-open .tt-acc-icon {
+      transform: rotate(45deg);
+    }
+    .tt-acc-body {
+      padding: 0 0 16px 0;
+    }
+    .tt-acc-body[hidden] {
+      display: none;
+    }
+    .tt-acc-content {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--grey-dark);
+      line-height: 1.7;
+    }
+    .tt-acc-content p {
+      margin: 0 0 10px 0;
+    }
+    .tt-acc-content p:last-child {
+      margin-bottom: 0;
+    }
+    .tt-faq-item {
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--grey-light);
+    }
+    .tt-faq-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    .tt-faq-q {
+      font-weight: 600;
+      color: var(--black);
+      margin: 0 0 6px 0 !important;
+    }
+    .tt-faq-a {
+      color: var(--grey-dark);
+      margin: 0 !important;
+    }
+
+    /* ================================================================
+       ZONE 2 — INGREDIENT PROOF BAR IMAGE BLOCKS
+       ================================================================ */
+    .tt-proof__img-wrap {
+      margin: 0 auto 20px auto;
+      width: 140px;
+      height: 140px;
+    }
+    .tt-proof__img-placeholder {
+      width: 140px;
+      height: 140px;
+      background: #1A1A1A;
+      border: 2px solid #333333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+    }
+    .tt-proof__img-alt {
+      font-family: var(--font-display);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.10em;
+      color: #666666;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    /* ================================================================
+       REVIEW CARD ENHANCEMENTS
+       ================================================================ */
+    .tt-reviewer-top {
+      margin-bottom: 14px;
+    }
+    .tt-reviewer-photo {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--cream-dark);
+      border: 2px solid var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .tt-reviewer-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .tt-reviewer-initials {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--black);
+      text-transform: uppercase;
+    }
+    .tt-texan-badge {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      background: var(--navy);
+      padding: 3px 7px;
+      border-radius: 0;
+      margin-left: 6px;
+    }
+
+    /* ================================================================
+       CROSS-SELL CARD FLAVOR DOTS
+       ================================================================ */
+    .tt-cross-flavor {
+      margin-bottom: 14px;
+      padding-bottom: 14px;
+      border-bottom: var(--border-std);
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .tt-cross-flavor-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .tt-cross-flavor-label {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--black);
+      min-width: 50px;
+    }
+    .tt-cross-flavor-dots {
+      display: flex;
+      gap: 4px;
+    }
+
+    /* ================================================================
+       ZONE 3.5 — CERTIFICATION PROOF SECTION
+       ================================================================ */
+    .tt-certs {
+      background: var(--black);
+      padding: 80px 20px;
+    }
+    .tt-certs__inner {
+      max-width: var(--container);
+      margin: 0 auto;
+    }
+    .tt-certs__label {
+      font-family: var(--font-display);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--gold);
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    .tt-certs__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+    .tt-cert-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .tt-cert-badge-wrap {
+      margin-bottom: 20px;
+      width: 72px;
+      height: 72px;
+    }
+    .tt-cert-img-wrap {
+      width: 72px !important;
+      height: 72px !important;
+    }
+    .tt-cert-img-wrap img {
+      width: 72px;
+      height: 72px;
+      object-fit: contain;
+    }
+    .tt-cert-title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--white);
+      margin: 0 0 12px 0;
+      letter-spacing: 0.04em;
+    }
+    .tt-cert-body {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: #888888;
+      line-height: 1.7;
+      margin: 0;
+      max-width: 280px;
+    }
+
+    /* Nav logo fallback styled text */
+    .tt-nav-logo-link .tt-img-fallback.tt-img-fallback--show {
+      display: inline-flex;
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--black);
+      letter-spacing: 0.04em;
+      height: 36px;
+      align-items: center;
+      padding: 0;
+    }
+
+    /* ================================================================
        MOBILE — max-width 768px
        ================================================================ */
     @media (max-width: 768px) {
@@ -1174,7 +1489,6 @@
       .tt-product-title { font-size: 40px; }
 
       .tt-plan-cards { grid-template-columns: 1fr; }
-      .tt-card-b { order: -1; }
       .tt-card-b-head { padding-right: 100px; }
 
       .tt-trust-strip {
@@ -1231,6 +1545,10 @@
       .tt-cross { padding: 48px 20px; }
       .tt-cross-header { font-size: 40px; }
       .tt-cross-grid { grid-template-columns: 1fr; }
+
+      /* Zone 3.5 certs */
+      .tt-certs { padding: 48px 20px; }
+      .tt-certs__grid { grid-template-columns: 1fr; gap: 32px; }
     }
 
   </style>
@@ -1348,6 +1666,63 @@
         <!-- 4. Fact line -->
         <p class="tt-fact-line">12 &times; 16oz glass bottles &nbsp;&middot;&nbsp; Pure cane sugar &nbsp;&middot;&nbsp; Organic black tea</p>
 
+        <!-- FLAVOR PROFILE DOTS — inserted before subscription module -->
+        <div class="tt-flavor-profile">
+          <div class="tt-flavor-header">FLAVOR PROFILE</div>
+          <div class="tt-flavor-grid">
+            <div class="tt-flavor-row">
+              <span class="tt-flavor-label">SWEET</span>
+              <div class="tt-flavor-dots">
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-empty"></span>
+              </div>
+            </div>
+            <div class="tt-flavor-row">
+              <span class="tt-flavor-label">SALTY</span>
+              <div class="tt-flavor-dots">
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-empty"></span>
+                <span class="tt-dot tt-dot-empty"></span>
+                <span class="tt-dot tt-dot-empty"></span>
+              </div>
+            </div>
+            <div class="tt-flavor-row">
+              <span class="tt-flavor-label">SOUR</span>
+              <div class="tt-flavor-dots">
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-empty"></span>
+                <span class="tt-dot tt-dot-empty"></span>
+                <span class="tt-dot tt-dot-empty"></span>
+                <span class="tt-dot tt-dot-empty"></span>
+              </div>
+            </div>
+            <div class="tt-flavor-row">
+              <span class="tt-flavor-label">BITTER</span>
+              <div class="tt-flavor-dots">
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-empty"></span>
+              </div>
+            </div>
+            <div class="tt-flavor-row">
+              <span class="tt-flavor-label">UMAMI</span>
+              <div class="tt-flavor-dots">
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- 5. Subscription module -->
         <div class="tt-sub-module">
 
@@ -1355,17 +1730,7 @@
 
           <div class="tt-plan-cards">
 
-            <!-- CARD A — unselected default -->
-            <label class="tt-card-a" id="tt-card-a" for="radio-once">
-              <div class="tt-card-a-head">
-                <input type="radio" name="sub-plan" id="radio-once">
-                <span class="tt-card-a-label">TRY IT ONCE</span>
-              </div>
-              <div class="tt-card-a-price">$23.99 / case</div>
-              <div class="tt-card-a-sub">One-time delivery</div>
-            </label>
-
-            <!-- CARD B — selected default -->
+            <!-- CARD B — selected default (DOM first so it renders on top) -->
             <label class="tt-card-b" id="tt-card-b" for="radio-sub">
               <span class="tt-founding-badge">FOUNDING TEXAN</span>
 
@@ -1387,7 +1752,7 @@
                 <i class="tt-value-icon" data-lucide="lock"></i>
                 <span class="tt-value-text">
                   <span class="tt-value-label">Founding price, locked forever</span>
-                  <span class="tt-value-sub">$19.19 is the launch rate. When this window closes, new subscribers pay the standard rate. Yours stays permanently.</span>
+                  <span class="tt-value-sub">Launch price. Locked permanently &mdash; new subscribers will pay more.</span>
                 </span>
               </div>
 
@@ -1395,7 +1760,7 @@
                 <i class="tt-value-icon" data-lucide="shield"></i>
                 <span class="tt-value-text">
                   <span class="tt-value-label">Reserved stock before it sells out</span>
-                  <span class="tt-value-sub">Poteet Strawberry and Fredericksburg Peach sell out fast. Founding Texans ship first. Everyone else waits.</span>
+                  <span class="tt-value-sub">Poteet Strawberry and Fredericksburg Peach ship to you first when stock runs low.</span>
                 </span>
               </div>
 
@@ -1403,7 +1768,7 @@
                 <i class="tt-value-icon" data-lucide="layout-grid"></i>
                 <span class="tt-value-text">
                   <span class="tt-value-label">Build your own case every delivery</span>
-                  <span class="tt-value-sub">Choose up to 4 flavors. Rotate every shipment. Configure in your portal before it locks.</span>
+                  <span class="tt-value-sub">Pick up to 4 flavors per case, reconfigured before every delivery.</span>
                 </span>
               </div>
 
@@ -1411,7 +1776,7 @@
                 <i class="tt-value-icon" data-lucide="map-pin"></i>
                 <span class="tt-value-text">
                   <span class="tt-value-label">The Texas Story Card</span>
-                  <span class="tt-value-sub">Ships with your first box. One per subscriber, never repeated. The history of the Texas town behind your SKU.</span>
+                  <span class="tt-value-sub">A physical card profiling the Texas town behind your SKU. Ships once, never repeated.</span>
                 </span>
               </div>
 
@@ -1419,7 +1784,7 @@
                 <i class="tt-value-icon" data-lucide="gift"></i>
                 <span class="tt-value-text">
                   <span class="tt-value-label">Quarterly Texas Drop</span>
-                  <span class="tt-value-sub">Every third delivery ships with a Go Texan certified add-on. A locally sourced Texas item. Worth $12&ndash;18.</span>
+                  <span class="tt-value-sub">A Go Texan certified Texas item in every third delivery. Worth $12&ndash;18.</span>
                 </span>
               </div>
 
@@ -1427,9 +1792,19 @@
                 <i class="tt-value-icon" data-lucide="repeat"></i>
                 <span class="tt-value-text">
                   <span class="tt-value-label">Skip, swap, or pause anytime</span>
-                  <span class="tt-value-sub">One click. No emails. No fees.</span>
+                  <span class="tt-value-sub">Skip, swap, or pause in one click. No fees.</span>
                 </span>
               </div>
+            </label>
+
+            <!-- CARD A — unselected default -->
+            <label class="tt-card-a" id="tt-card-a" for="radio-once">
+              <div class="tt-card-a-head">
+                <input type="radio" name="sub-plan" id="radio-once">
+                <span class="tt-card-a-label">TRY IT ONCE</span>
+              </div>
+              <div class="tt-card-a-price">$23.99 / case</div>
+              <div class="tt-card-a-sub">One-time delivery</div>
             </label>
 
           </div>
@@ -1471,24 +1846,73 @@
           </div>
         </div>
 
-        <!-- 8. Price anchoring line -->
-        <p class="tt-price-anchor">Founding Texans save an average of $48 a year versus one-time pricing. That gap widens every time the retail price goes up.</p>
+        <!-- ACCORDIONS — What's Inside + Shipping + FAQ -->
+        <div class="tt-accordions">
 
-        <!-- 9. Ingredient strip -->
-        <div class="tt-ingredient-strip">
-          <div class="tt-ingredient-col">
-            <span class="tt-ingredient-name">Pure Cane Sugar</span>
-            <span class="tt-ingredient-origin">Sugar Land, TX</span>
+          <div class="tt-accordion" id="acc-inside">
+            <button class="tt-acc-trigger" type="button" aria-expanded="false" aria-controls="acc-inside-body">
+              <span class="tt-acc-label">WHAT'S INSIDE</span>
+              <i class="tt-acc-icon" data-lucide="plus"></i>
+            </button>
+            <div class="tt-acc-body" id="acc-inside-body" hidden>
+              <div class="tt-acc-content">
+                <p><strong>Ingredients:</strong> Brewed organic black tea (water, tea), imperial pure cane sugar, lemon juice.</p>
+                <p><strong>Serving size:</strong> 16 fl oz (1 bottle) &nbsp;&middot;&nbsp; <strong>Calories:</strong> 101</p>
+                <p>Total sugars: 25g (pure cane &mdash; not high fructose corn syrup)<br>Sodium: Low salt</p>
+              </div>
+            </div>
           </div>
-          <div class="tt-ingredient-col">
-            <span class="tt-ingredient-name">Organic Black Tea</span>
-            <span class="tt-ingredient-origin-neutral">Single-origin</span>
+
+          <div class="tt-accordion" id="acc-shipping">
+            <button class="tt-acc-trigger" type="button" aria-expanded="false" aria-controls="acc-shipping-body">
+              <span class="tt-acc-label">SHIPPING</span>
+              <i class="tt-acc-icon" data-lucide="plus"></i>
+            </button>
+            <div class="tt-acc-body" id="acc-shipping-body" hidden>
+              <div class="tt-acc-content">
+                <p>12 &times; 16oz glass bottles per case. Ships in a reinforced, glass-safe case.</p>
+                <p>Standard: 3&ndash;5 business days &nbsp;&middot;&nbsp; Express: 1&ndash;2 business days</p>
+                <p>Free shipping on all orders over $75. Founding Texan subscribers receive priority shipping on every delivery.</p>
+                <p>Questions? 512 491 7244</p>
+              </div>
+            </div>
           </div>
-          <div class="tt-ingredient-col">
-            <span class="tt-ingredient-name-sm">Real Lemon Juice</span>
-            <span class="tt-ingredient-origin-neutral">Cold-pressed</span>
+
+          <div class="tt-accordion" id="acc-faq">
+            <button class="tt-acc-trigger" type="button" aria-expanded="false" aria-controls="acc-faq-body">
+              <span class="tt-acc-label">FREQUENTLY ASKED QUESTIONS</span>
+              <i class="tt-acc-icon" data-lucide="plus"></i>
+            </button>
+            <div class="tt-acc-body" id="acc-faq-body" hidden>
+              <div class="tt-acc-content">
+                <div class="tt-faq-item">
+                  <p class="tt-faq-q">What if a bottle breaks in shipping?</p>
+                  <p class="tt-faq-a">Every case ships in a reinforced glass-safe box designed specifically for glass bottles. If anything arrives broken, we replace it &mdash; no photos required, no questions asked. Contact us at 512 491 7244 or reply to your order confirmation.</p>
+                </div>
+                <div class="tt-faq-item">
+                  <p class="tt-faq-q">Is this available in stores?</p>
+                  <p class="tt-faq-a">Texas Tea is stocked at select HEB and Kroger locations in Texas. However, several flavors &mdash; including Poteet Strawberry White Tea and Fredericksburg Peach Lemonade &mdash; are available exclusively online. Subscribing is the only way to guarantee access to those SKUs before they sell out.</p>
+                </div>
+                <div class="tt-faq-item">
+                  <p class="tt-faq-q">Can I cancel my subscription?</p>
+                  <p class="tt-faq-a">Yes &mdash; skip, swap, pause, or cancel anytime in one click from your subscriber portal. No emails. No phone calls. No fees. Founding Texan pricing is locked for as long as you stay subscribed. If you cancel and re-subscribe later, you'll pay the then-current rate.</p>
+                </div>
+                <div class="tt-faq-item">
+                  <p class="tt-faq-q">What is the Founding Texan price lock?</p>
+                  <p class="tt-faq-a">When you subscribe during the Founding Texan window, your $19.19/case rate is locked permanently &mdash; even as the standard price increases. When this launch window closes, new subscribers pay the standard rate. Your rate never changes for as long as you remain subscribed.</p>
+                </div>
+                <div class="tt-faq-item">
+                  <p class="tt-faq-q">What sweetener is used?</p>
+                  <p class="tt-faq-a">Imperial pure cane sugar from Sugar Land, Texas. No high fructose corn syrup, no artificial sweeteners, no stevia. Cane sugar only.</p>
+                </div>
+              </div>
+            </div>
           </div>
+
         </div>
+
+        <!-- Price anchoring line — moved after accordions -->
+        <p class="tt-price-anchor">Founding Texans save an average of $48 a year versus one-time pricing. That gap widens every time the retail price goes up.</p>
 
       </div>
     </div>
@@ -1500,14 +1924,35 @@
   <section class="tt-proof">
     <div class="tt-proof__grid">
       <div class="tt-proof__col tt-proof__col--1">
+        <div class="tt-proof__img-wrap">
+          <div class="tt-proof__img-placeholder">
+            <!-- REPLACE: close-up photo of raw cane sugar crystals, natural light,
+                 warm tones. Square crop. No white background — raw/tactile. -->
+            <span class="tt-proof__img-alt">PURE CANE SUGAR</span>
+          </div>
+        </div>
         <h3 class="tt-proof__header">PURE CANE SUGAR</h3>
         <p class="tt-proof__body">From the sugarcane fields of Sugar Land, Texas</p>
       </div>
       <div class="tt-proof__col tt-proof__col--2">
+        <div class="tt-proof__img-wrap">
+          <div class="tt-proof__img-placeholder">
+            <!-- REPLACE: loose-leaf black tea or dried tea leaves, close-up,
+                 dark tones. Square crop. Raw and textural. -->
+            <span class="tt-proof__img-alt">ORGANIC BLACK TEA</span>
+          </div>
+        </div>
         <h3 class="tt-proof__header">ORGANIC BLACK TEA</h3>
         <p class="tt-proof__body">Single-origin, brewed fresh before bottling</p>
       </div>
       <div class="tt-proof__col tt-proof__col--3">
+        <div class="tt-proof__img-wrap">
+          <div class="tt-proof__img-placeholder">
+            <!-- REPLACE: sliced lemon cross-section or fresh lemon on natural surface.
+                 Bright, acidic, real. Square crop. No white studio background. -->
+            <span class="tt-proof__img-alt">REAL LEMON JUICE</span>
+          </div>
+        </div>
         <h3 class="tt-proof__header">REAL LEMON JUICE</h3>
         <p class="tt-proof__body">Cold-pressed, not from concentrate</p>
       </div>
@@ -1549,6 +1994,57 @@
           <div class="tt-origin__map-placeholder"></div>
           <div class="tt-origin__map-note">[ REPLACE WITH TEXAS SVG MAP ]</div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       ZONE 3.5 — CERTIFICATION PROOF SECTION
+       ================================================================ -->
+  <section class="tt-certs">
+    <div class="tt-certs__inner">
+      <div class="tt-certs__label">CERTIFIED &amp; VERIFIED</div>
+      <div class="tt-certs__grid">
+
+        <div class="tt-cert-card">
+          <div class="tt-cert-badge-wrap">
+            <div class="tt-img-wrap tt-cert-img-wrap">
+              <img src="https://texastea.com/cdn/shop/files/GoTEXAN_4597e88c-4480-40de-89e5-709c4dc72de2_1.png"
+                   alt="Go Texan Certified — Texas Department of Agriculture"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+              <div class="tt-img-fallback">GO TEXAN</div>
+            </div>
+          </div>
+          <h3 class="tt-cert-title">GO TEXAN CERTIFIED</h3>
+          <p class="tt-cert-body">Certified by the Texas Department of Agriculture. Only products made, grown, or processed in Texas earn this mark.</p>
+        </div>
+
+        <div class="tt-cert-card">
+          <div class="tt-cert-badge-wrap">
+            <div class="tt-img-wrap tt-cert-img-wrap">
+              <img src="https://texastea.com/cdn/shop/files/NONGMO_f52d87b1-a18a-4537-9e5c-7258b49fb817_1.png"
+                   alt="Non-GMO — no genetically modified ingredients"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+              <div class="tt-img-fallback">NON-GMO</div>
+            </div>
+          </div>
+          <h3 class="tt-cert-title">NON-GMO</h3>
+          <p class="tt-cert-body">No genetically modified ingredients. The cane sugar, tea, and lemon juice are what they say they are &mdash; nothing altered.</p>
+        </div>
+
+        <div class="tt-cert-card">
+          <div class="tt-cert-badge-wrap">
+            <div class="tt-img-wrap tt-cert-img-wrap">
+              <img src="https://texastea.com/cdn/shop/files/GLUTENFREE_2f61dc8e-5f7b-4c9b-bf3e-9da69b07110c.png"
+                   alt="Gluten Free — no gluten-containing ingredients"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+              <div class="tt-img-fallback">GLUTEN FREE</div>
+            </div>
+          </div>
+          <h3 class="tt-cert-title">GLUTEN FREE</h3>
+          <p class="tt-cert-body">Three ingredients. None of them contain gluten. Brewed organic black tea, cane sugar, lemon juice. That is the complete list.</p>
+        </div>
+
       </div>
     </div>
   </section>
@@ -1598,9 +2094,16 @@
        ZONE 5 — REVIEWS
        ================================================================ -->
   <section class="tt-reviews" id="reviews">
-    <h2 class="tt-reviews-header">WHAT TEXANS ARE SAYING</h2>
+    <h2 class="tt-reviews-header">WHAT PEOPLE ARE SAYING</h2>
     <div class="tt-reviews-grid">
       <article class="tt-review-card">
+        <div class="tt-reviewer-top">
+          <div class="tt-reviewer-photo">
+            <!-- REPLACE: headshot or avatar photo of reviewer Michael T.
+                 Round crop. If no real photo, leave placeholder. -->
+            <span class="tt-reviewer-initials">MT</span>
+          </div>
+        </div>
         <div class="tt-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
         <p class="tt-review-text">"Bold, clean tea that tastes rich and refreshing, not thin or watery. This is the real thing."</p>
         <div class="tt-review-meta">
@@ -1609,6 +2112,13 @@
         </div>
       </article>
       <article class="tt-review-card">
+        <div class="tt-reviewer-top">
+          <div class="tt-reviewer-photo">
+            <!-- REPLACE: headshot or avatar photo of reviewer Sarah K.
+                 Round crop. If no real photo, leave placeholder. -->
+            <span class="tt-reviewer-initials">SK</span>
+          </div>
+        </div>
         <div class="tt-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
         <p class="tt-review-text">"This one is actually made in Texas instead of New Jersey. You can tell from the first sip."</p>
         <div class="tt-review-meta">
@@ -1617,47 +2127,21 @@
         </div>
       </article>
       <article class="tt-review-card">
+        <div class="tt-reviewer-top">
+          <div class="tt-reviewer-photo">
+            <!-- REPLACE: headshot or avatar photo of reviewer James R.
+                 Round crop. If no real photo, leave placeholder. -->
+            <span class="tt-reviewer-initials">JR</span>
+          </div>
+        </div>
         <div class="tt-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
         <p class="tt-review-text">"The sweetness is obviously pure cane sugar. Almost gritty and I mean that in the best possible way."</p>
         <div class="tt-review-meta">
           <span class="tt-review-author">JAMES R.  &middot;  AUSTIN, TX</span>
           <span class="tt-review-badge">VERIFIED BUYER</span>
+          <span class="tt-texan-badge">TEXAN</span>
         </div>
       </article>
-    </div>
-  </section>
-
-  <!-- ================================================================
-       ZONE 6 — PRODUCT DETAILS
-       ================================================================ -->
-  <section class="tt-details">
-    <div class="tt-details-inner">
-      <div class="tt-details-col">
-        <h2 class="tt-details-col-header">WHAT'S INSIDE</h2>
-        <div class="tt-details-body">
-          <h3 class="tt-details-subhead">Ingredients</h3>
-          <p>Brewed organic black tea (water, tea), imperial pure cane sugar, lemon juice.</p>
-          <h3 class="tt-details-subhead">Nutrition Facts</h3>
-          <p>
-            Serving size: 16 fl oz (1 bottle)<br>
-            Calories: 101<br>
-            Total sugars: 25g (pure cane &mdash; not high fructose corn syrup)<br>
-            Sodium: Low salt<br>
-            Vitamin A: 0%&nbsp;&nbsp; Vitamin C: 0%<br>
-            Calcium: 0%&nbsp;&nbsp;&nbsp;&nbsp; Iron: 0%
-          </p>
-        </div>
-      </div>
-      <div class="tt-details-col">
-        <h2 class="tt-details-col-header">SHIPPING</h2>
-        <div class="tt-details-body">
-          <p>12 &times; 16oz glass bottles per case.<br>Ships in a reinforced, glass-safe case.</p>
-          <p>Standard delivery: 3&ndash;5 business days<br>Express delivery: 1&ndash;2 business days</p>
-          <p>Free shipping on all orders over $75.</p>
-          <p>Founding Texan subscribers receive priority shipping on every delivery.</p>
-          <p>Questions? 512 491 7244</p>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -1665,7 +2149,7 @@
        ZONE 7 — CROSS-SELL
        ================================================================ -->
   <section class="tt-cross">
-    <h2 class="tt-cross-header">MORE FROM TEXAS</h2>
+    <h2 class="tt-cross-header">MORE FROM TEXAS TEA</h2>
     <p class="tt-cross-sub">Every SKU named for the place it comes from.</p>
     <div class="tt-cross-grid">
       <article class="tt-cross-card">
@@ -1680,6 +2164,28 @@
           <div class="tt-cross-location">POTEET, TX</div>
           <h3 class="tt-cross-name">Poteet Strawberry White Tea</h3>
           <div class="tt-cross-price">$20.99 / case</div>
+          <div class="tt-cross-flavor">
+            <div class="tt-cross-flavor-row">
+              <span class="tt-cross-flavor-label">SWEET</span>
+              <div class="tt-cross-flavor-dots">
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-empty"></span>
+                <span class="tt-dot tt-dot-empty"></span>
+              </div>
+            </div>
+            <div class="tt-cross-flavor-row">
+              <span class="tt-cross-flavor-label">FRUITY</span>
+              <div class="tt-cross-flavor-dots">
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+              </div>
+            </div>
+          </div>
           <button type="button" class="tt-cross-cta">ADD TO CART</button>
         </div>
       </article>
@@ -1695,6 +2201,28 @@
           <div class="tt-cross-location">FREDERICKSBURG, TX</div>
           <h3 class="tt-cross-name">Fredericksburg Peach Lemonade</h3>
           <div class="tt-cross-price">$25.99 / case</div>
+          <div class="tt-cross-flavor">
+            <div class="tt-cross-flavor-row">
+              <span class="tt-cross-flavor-label">SWEET</span>
+              <div class="tt-cross-flavor-dots">
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-empty"></span>
+              </div>
+            </div>
+            <div class="tt-cross-flavor-row">
+              <span class="tt-cross-flavor-label">CITRUS</span>
+              <div class="tt-cross-flavor-dots">
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-empty"></span>
+                <span class="tt-dot tt-dot-empty"></span>
+              </div>
+            </div>
+          </div>
           <button type="button" class="tt-cross-cta">ADD TO CART</button>
         </div>
       </article>
@@ -1710,6 +2238,28 @@
           <div class="tt-cross-location">RIO GRANDE VALLEY, TX</div>
           <h3 class="tt-cross-name">RGV Texas Style Half &amp; Half</h3>
           <div class="tt-cross-price">$20.99 / case</div>
+          <div class="tt-cross-flavor">
+            <div class="tt-cross-flavor-row">
+              <span class="tt-cross-flavor-label">SWEET</span>
+              <div class="tt-cross-flavor-dots">
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-empty"></span>
+                <span class="tt-dot tt-dot-empty"></span>
+              </div>
+            </div>
+            <div class="tt-cross-flavor-row">
+              <span class="tt-cross-flavor-label">CITRUS</span>
+              <div class="tt-cross-flavor-dots">
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-empty"></span>
+              </div>
+            </div>
+          </div>
           <button type="button" class="tt-cross-cta">ADD TO CART</button>
         </div>
       </article>
@@ -1830,6 +2380,30 @@
             e.stopPropagation();
             pills.forEach(function (p) { p.classList.remove('tt-pill-selected'); });
             pill.classList.add('tt-pill-selected');
+          });
+        });
+      }
+
+      // ============================================
+      // ACCORDION TOGGLE
+      // ============================================
+      var accTriggers = document.querySelectorAll('.tt-acc-trigger');
+      if (accTriggers && accTriggers.length) {
+        accTriggers.forEach(function(trigger) {
+          trigger.addEventListener('click', function() {
+            var accordion = trigger.closest('.tt-accordion');
+            var bodyId = trigger.getAttribute('aria-controls');
+            var body = document.getElementById(bodyId);
+            var isOpen = accordion.classList.contains('tt-acc-open');
+            if (isOpen) {
+              accordion.classList.remove('tt-acc-open');
+              trigger.setAttribute('aria-expanded', 'false');
+              if (body) body.setAttribute('hidden', '');
+            } else {
+              accordion.classList.add('tt-acc-open');
+              trigger.setAttribute('aria-expanded', 'true');
+              if (body) body.removeAttribute('hidden');
+            }
           });
         });
       }
