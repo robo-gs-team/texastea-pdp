@@ -263,6 +263,26 @@
       border-radius: 0;
       margin-bottom: 12px;
     }
+    .tt-collection-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 8px 0;
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    .tt-collection-label {
+      color: var(--red);
+    }
+    .tt-collection-sep {
+      color: var(--grey-mid);
+    }
+    .tt-collection-name {
+      color: var(--grey-dark);
+    }
     .tt-product-title {
       font-family: var(--font-display);
       font-weight: 900;
@@ -295,6 +315,35 @@
       font-size: 13px;
       color: var(--grey-mid);
       margin: 0 0 20px 0;
+    }
+    .tt-product-desc {
+      margin: 0 0 20px 0;
+      padding: 0 0 20px 0;
+      border-bottom: var(--border-std);
+    }
+    .tt-desc-tagline {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--black);
+      margin: 0 0 10px 0;
+      line-height: 1.2;
+    }
+    .tt-desc-body {
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--grey-dark);
+      margin: 0 0 10px 0;
+    }
+    .tt-desc-serve {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-style: italic;
+      color: var(--grey-mid);
+      margin: 0;
     }
 
     /* ---------- Subscription Module ---------- */
@@ -437,6 +486,37 @@
       font-family: var(--font-body);
       font-size: 12px;
       color: var(--grey-mid);
+    }
+    .tt-per-bottle {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--grey-mid);
+      margin-left: 2px;
+    }
+    .tt-per-bottle-muted {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--grey-mid);
+    }
+    .tt-preview-btn {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 4px 10px;
+      background: var(--white);
+      border: 2px solid var(--black);
+      border-radius: 0;
+      font-family: var(--font-display);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--black);
+      cursor: pointer;
+    }
+    .tt-preview-btn:hover {
+      background: var(--black);
+      color: var(--white);
     }
 
     /* Value stack */
@@ -749,6 +829,20 @@
       background: var(--black);
       margin: 24px 0;
     }
+    .tt-origin__map-img-wrap {
+      position: relative;
+      width: 240px;
+      height: 160px;
+      margin: 24px 0;
+      border: 2px solid var(--black);
+      background: var(--cream);
+    }
+    .tt-origin__map-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
     .tt-origin__map-note {
       font: 400 11px/1.3 var(--font-display);
       text-transform: uppercase;
@@ -764,8 +858,84 @@
       padding: 80px 20px;
     }
     .tt-taste__inner {
-      max-width: 640px;
+      max-width: 820px;
       margin: 0 auto;
+    }
+    .tt-taste__intro {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--grey-dark);
+      margin: 0 0 36px 0;
+      max-width: 640px;
+    }
+    .tt-taste__bar-note {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--grey-mid);
+      line-height: 1.5;
+      margin: 6px 0 0 0;
+      font-style: italic;
+    }
+    .tt-taste__pairings {
+      margin-top: 48px;
+      padding-top: 36px;
+      border-top: 2px solid var(--black);
+    }
+    .tt-taste__pairings-header {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 22px;
+      text-transform: uppercase;
+      color: var(--black);
+      margin: 0 0 24px 0;
+      letter-spacing: 0.02em;
+    }
+    .tt-taste__pairings-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .tt-pairing-card {
+      background: var(--cream);
+      border: 2px solid var(--black);
+      border-radius: 2px;
+      padding: 18px 16px 16px 16px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      box-shadow: 4px 4px 0 var(--black);
+    }
+    .tt-pairing-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      background: var(--red);
+      color: var(--white);
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 0.02em;
+      margin-bottom: 10px;
+      border-radius: 0;
+    }
+    .tt-pairing-label {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--black);
+      margin-bottom: 6px;
+      letter-spacing: 0.02em;
+    }
+    .tt-pairing-note {
+      font-family: var(--font-body);
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--grey-dark);
     }
     .tt-taste__header {
       font: 800 44px/1.1 var(--font-display);
@@ -836,6 +1006,73 @@
       gap: 20px;
       max-width: var(--container);
       margin: 0 auto;
+    }
+    .tt-reviews-carousel {
+      max-width: var(--container);
+      margin: 0 auto;
+      position: relative;
+      display: flex;
+      align-items: stretch;
+      gap: 12px;
+    }
+    .tt-reviews-viewport {
+      flex: 1;
+      overflow: hidden;
+    }
+    .tt-reviews-track {
+      display: flex;
+      gap: 20px;
+      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+    }
+    .tt-reviews-carousel .tt-review-card {
+      flex: 0 0 calc((100% - 40px) / 3);
+      box-sizing: border-box;
+    }
+    @media (max-width: 1024px) and (min-width: 769px) {
+      .tt-reviews-carousel .tt-review-card {
+        flex: 0 0 calc((100% - 20px) / 2);
+      }
+    }
+    .tt-rev-arrow {
+      flex: 0 0 44px;
+      width: 44px;
+      background: var(--white);
+      border: 2px solid var(--white);
+      border-radius: 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      align-self: center;
+      height: 44px;
+    }
+    .tt-rev-arrow:hover { background: var(--gold); border-color: var(--gold); }
+    .tt-rev-arrow i,
+    .tt-rev-arrow svg {
+      width: 20px;
+      height: 20px;
+      color: var(--black);
+    }
+    .tt-reviews-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 28px;
+    }
+    .tt-reviews-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: 2px solid var(--white);
+      background: transparent;
+      padding: 0;
+      cursor: pointer;
+    }
+    .tt-reviews-dot.tt-reviews-dot-active {
+      background: var(--gold);
+      border-color: var(--gold);
     }
     .tt-review-card {
       background: var(--white);
@@ -1380,7 +1617,7 @@
        ZONE 3.5 — CERTIFICATION PROOF SECTION
        ================================================================ */
     .tt-certs {
-      background: var(--black);
+      background: var(--cream);
       padding: 80px 20px;
     }
     .tt-certs__inner {
@@ -1393,7 +1630,7 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.14em;
-      color: var(--gold);
+      color: var(--grey-mid);
       margin-bottom: 40px;
       text-align: center;
     }
@@ -1427,17 +1664,219 @@
       font-size: 18px;
       font-weight: 800;
       text-transform: uppercase;
-      color: var(--white);
+      color: var(--black);
       margin: 0 0 12px 0;
       letter-spacing: 0.04em;
     }
     .tt-cert-body {
       font-family: var(--font-body);
       font-size: 13px;
-      color: #888888;
+      color: var(--grey-dark);
       line-height: 1.7;
       margin: 0;
       max-width: 280px;
+    }
+
+    /* ================================================================
+       TEXAS STORY CARD — MODAL
+       ================================================================ */
+    .tt-story-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    .tt-story-modal.tt-story-open {
+      display: flex;
+    }
+    .tt-story-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(18, 18, 18, 0.82);
+    }
+    .tt-story-dialog {
+      position: relative;
+      z-index: 2;
+      max-width: 560px;
+      width: calc(100% - 32px);
+      max-height: calc(100vh - 40px);
+      overflow-y: auto;
+    }
+    .tt-story-close {
+      position: absolute;
+      top: -16px;
+      right: -16px;
+      width: 40px;
+      height: 40px;
+      background: var(--white);
+      border: 2px solid var(--black);
+      border-radius: 0;
+      cursor: pointer;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 4px 4px 0 var(--black);
+      padding: 0;
+    }
+    .tt-story-close i,
+    .tt-story-close svg {
+      width: 18px;
+      height: 18px;
+      color: var(--black);
+    }
+    .tt-postcard {
+      position: relative;
+      background: var(--cream);
+      border: 2px solid var(--black);
+      border-radius: 2px;
+      box-shadow: 8px 8px 0 var(--red);
+      padding: 44px 40px 36px 40px;
+      box-sizing: border-box;
+    }
+    .tt-postcard__stamp {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      width: 64px;
+      height: 78px;
+    }
+    .tt-postcard__stamp-frame {
+      width: 100%;
+      height: 100%;
+      background: var(--white);
+      border: 2px dashed var(--black);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+    .tt-postcard__stamp-state {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 22px;
+      color: var(--red);
+      line-height: 1;
+    }
+    .tt-postcard__stamp-val {
+      font-family: var(--font-display);
+      font-size: 7px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--black);
+      text-transform: uppercase;
+    }
+    .tt-postcard__ribbon {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      margin-bottom: 16px;
+    }
+    .tt-postcard__title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 44px;
+      line-height: 1.0;
+      text-transform: uppercase;
+      color: var(--black);
+      margin: 0 0 6px 0;
+      letter-spacing: 0.01em;
+    }
+    .tt-postcard__sub {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--grey-dark);
+      margin-bottom: 20px;
+    }
+    .tt-postcard__divider {
+      border-top: 1px dashed var(--black);
+      margin: 0 0 20px 0;
+    }
+    .tt-postcard__body {
+      font-family: var(--font-body);
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--grey-dark);
+      margin: 0 0 14px 0;
+    }
+    .tt-postcard__body:last-of-type {
+      margin-bottom: 20px;
+    }
+    .tt-postcard__facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 0 0 20px 0;
+    }
+    .tt-postcard__fact {
+      background: var(--white);
+      border: 2px solid var(--black);
+      padding: 10px 8px;
+      text-align: center;
+    }
+    .tt-postcard__fact-label {
+      font-family: var(--font-body);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--grey-mid);
+      margin-bottom: 4px;
+    }
+    .tt-postcard__fact-val {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--black);
+      letter-spacing: 0.02em;
+    }
+    .tt-postcard__foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .tt-postcard__foot-left {
+      flex: 1;
+    }
+    .tt-postcard__foot-label {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--black);
+      margin-bottom: 2px;
+    }
+    .tt-postcard__foot-sub {
+      font-family: var(--font-body);
+      font-size: 11px;
+      color: var(--grey-mid);
+      font-style: italic;
+    }
+    .tt-postcard__foot-mark {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--red);
+      border: 2px solid var(--red);
+      padding: 4px 8px;
+      white-space: nowrap;
     }
 
     /* Nav logo fallback styled text */
@@ -1526,11 +1965,16 @@
       /* Zone 4 */
       .tt-taste { padding: 48px 20px; }
       .tt-taste__header { font-size: 36px; }
+      .tt-taste__pairings-grid { grid-template-columns: 1fr; }
 
       /* Zone 5 */
       .tt-reviews { padding: 48px 20px; }
       .tt-reviews-header { font-size: 40px; margin-bottom: 40px; }
       .tt-reviews-grid { grid-template-columns: 1fr; }
+      .tt-reviews-carousel .tt-review-card {
+        flex: 0 0 100%;
+      }
+      .tt-rev-arrow { display: none; }
       .tt-review-meta {
         flex-direction: column;
         align-items: flex-start;
@@ -1654,7 +2098,12 @@
         <!-- 1. Origin badge -->
         <span class="tt-origin-badge">SUGAR LAND, TX</span>
 
-        <!-- 2. Product title -->
+        <!-- 2. Collection line + Product title -->
+        <div class="tt-collection-line">
+          <span class="tt-collection-label">TEXAS TEAS</span>
+          <span class="tt-collection-sep">/</span>
+          <span class="tt-collection-name">SWEET TEA COLLECTION</span>
+        </div>
         <h1 class="tt-product-title">SUGAR LAND SWEET TEA</h1>
 
         <!-- 3. Review line -->
@@ -1665,6 +2114,13 @@
 
         <!-- 4. Fact line -->
         <p class="tt-fact-line">12 &times; 16oz glass bottles &nbsp;&middot;&nbsp; Pure cane sugar &nbsp;&middot;&nbsp; Organic black tea</p>
+
+        <!-- PRODUCT DESCRIPTION -->
+        <div class="tt-product-desc">
+          <p class="tt-desc-tagline">Bold. Classic. Pure Texas Sweetness.</p>
+          <p class="tt-desc-body">Sugar Land Sweet Tea is brewed with single-origin organic black tea, balanced with cold-pressed lemon juice, and sweetened with pure cane sugar from the very fields that gave Sugar Land its name. Three ingredients. Glass bottled. No corn syrup, no flavorings, no shortcuts.</p>
+          <p class="tt-desc-serve">Best served over ice on a long Texas afternoon.</p>
+        </div>
 
         <!-- FLAVOR PROFILE DOTS — inserted before subscription module -->
         <div class="tt-flavor-profile">
@@ -1681,16 +2137,6 @@
               </div>
             </div>
             <div class="tt-flavor-row">
-              <span class="tt-flavor-label">SALTY</span>
-              <div class="tt-flavor-dots">
-                <span class="tt-dot tt-dot-filled"></span>
-                <span class="tt-dot tt-dot-filled"></span>
-                <span class="tt-dot tt-dot-empty"></span>
-                <span class="tt-dot tt-dot-empty"></span>
-                <span class="tt-dot tt-dot-empty"></span>
-              </div>
-            </div>
-            <div class="tt-flavor-row">
               <span class="tt-flavor-label">SOUR</span>
               <div class="tt-flavor-dots">
                 <span class="tt-dot tt-dot-filled"></span>
@@ -1701,23 +2147,13 @@
               </div>
             </div>
             <div class="tt-flavor-row">
-              <span class="tt-flavor-label">BITTER</span>
+              <span class="tt-flavor-label">SALTY</span>
               <div class="tt-flavor-dots">
-                <span class="tt-dot tt-dot-filled"></span>
-                <span class="tt-dot tt-dot-filled"></span>
-                <span class="tt-dot tt-dot-filled"></span>
                 <span class="tt-dot tt-dot-filled"></span>
                 <span class="tt-dot tt-dot-empty"></span>
-              </div>
-            </div>
-            <div class="tt-flavor-row">
-              <span class="tt-flavor-label">UMAMI</span>
-              <div class="tt-flavor-dots">
-                <span class="tt-dot tt-dot-filled"></span>
-                <span class="tt-dot tt-dot-filled"></span>
-                <span class="tt-dot tt-dot-filled"></span>
-                <span class="tt-dot tt-dot-filled"></span>
-                <span class="tt-dot tt-dot-filled"></span>
+                <span class="tt-dot tt-dot-empty"></span>
+                <span class="tt-dot tt-dot-empty"></span>
+                <span class="tt-dot tt-dot-empty"></span>
               </div>
             </div>
           </div>
@@ -1726,13 +2162,13 @@
         <!-- 5. Subscription module -->
         <div class="tt-sub-module">
 
-          <div class="tt-sub-anchor">874 Texans locked in their Founding rate this month</div>
+          <div class="tt-sub-anchor">874 Texans locked in their Founding Member rate this month</div>
 
           <div class="tt-plan-cards">
 
             <!-- CARD B — selected default (DOM first so it renders on top) -->
             <label class="tt-card-b" id="tt-card-b" for="radio-sub">
-              <span class="tt-founding-badge">FOUNDING TEXAN</span>
+              <span class="tt-founding-badge">FOUNDING MEMBER</span>
 
               <div class="tt-card-b-head">
                 <input type="radio" name="sub-plan" id="radio-sub" checked>
@@ -1740,10 +2176,11 @@
               </div>
 
               <div class="tt-card-b-price-row">
-                <span class="tt-card-b-price">$19.19 / case</span>
+                <span class="tt-card-b-price">$17.99 / case</span>
                 <span class="tt-card-b-strike">$23.99</span>
+                <span class="tt-per-bottle">&middot; <span class="tt-per-bottle-muted">$1.50 / bottle</span></span>
               </div>
-              <div class="tt-card-b-subline">Save 20% &middot; Every 5 weeks</div>
+              <div class="tt-card-b-subline">Save 25% &middot; Every 5 weeks</div>
 
               <hr class="tt-value-sep">
 
@@ -1777,14 +2214,7 @@
                 <span class="tt-value-text">
                   <span class="tt-value-label">The Texas Story Card</span>
                   <span class="tt-value-sub">A physical card profiling the Texas town behind your SKU. Ships once, never repeated.</span>
-                </span>
-              </div>
-
-              <div class="tt-value-row">
-                <i class="tt-value-icon" data-lucide="gift"></i>
-                <span class="tt-value-text">
-                  <span class="tt-value-label">Quarterly Texas Drop</span>
-                  <span class="tt-value-sub">A Go Texan certified Texas item in every third delivery. Worth $12&ndash;18.</span>
+                  <button type="button" class="tt-preview-btn" id="tt-story-preview-btn">PREVIEW</button>
                 </span>
               </div>
 
@@ -1803,7 +2233,7 @@
                 <input type="radio" name="sub-plan" id="radio-once">
                 <span class="tt-card-a-label">TRY IT ONCE</span>
               </div>
-              <div class="tt-card-a-price">$23.99 / case</div>
+              <div class="tt-card-a-price">$23.99 / case <span class="tt-per-bottle-muted">&middot; $2.00 / bottle</span></div>
               <div class="tt-card-a-sub">One-time delivery</div>
             </label>
 
@@ -1872,7 +2302,7 @@
               <div class="tt-acc-content">
                 <p>12 &times; 16oz glass bottles per case. Ships in a reinforced, glass-safe case.</p>
                 <p>Standard: 3&ndash;5 business days &nbsp;&middot;&nbsp; Express: 1&ndash;2 business days</p>
-                <p>Free shipping on all orders over $75. Founding Texan subscribers receive priority shipping on every delivery.</p>
+                <p>Free shipping on all orders over $75. Founding Member subscribers receive priority shipping on every delivery.</p>
                 <p>Questions? 512 491 7244</p>
               </div>
             </div>
@@ -1895,11 +2325,11 @@
                 </div>
                 <div class="tt-faq-item">
                   <p class="tt-faq-q">Can I cancel my subscription?</p>
-                  <p class="tt-faq-a">Yes &mdash; skip, swap, pause, or cancel anytime in one click from your subscriber portal. No emails. No phone calls. No fees. Founding Texan pricing is locked for as long as you stay subscribed. If you cancel and re-subscribe later, you'll pay the then-current rate.</p>
+                  <p class="tt-faq-a">Yes &mdash; skip, swap, pause, or cancel anytime in one click from your subscriber portal. No emails. No phone calls. No fees. Founding Member pricing is locked for as long as you stay subscribed. If you cancel and re-subscribe later, you'll pay the then-current rate.</p>
                 </div>
                 <div class="tt-faq-item">
-                  <p class="tt-faq-q">What is the Founding Texan price lock?</p>
-                  <p class="tt-faq-a">When you subscribe during the Founding Texan window, your $19.19/case rate is locked permanently &mdash; even as the standard price increases. When this launch window closes, new subscribers pay the standard rate. Your rate never changes for as long as you remain subscribed.</p>
+                  <p class="tt-faq-q">What is the Founding Member price lock?</p>
+                  <p class="tt-faq-a">When you subscribe during the Founding Member window, your $17.99/case rate is locked permanently &mdash; even as the standard price increases. When this launch window closes, new subscribers pay the standard rate. Your rate never changes for as long as you remain subscribed.</p>
                 </div>
                 <div class="tt-faq-item">
                   <p class="tt-faq-q">What sweetener is used?</p>
@@ -1912,7 +2342,7 @@
         </div>
 
         <!-- Price anchoring line — moved after accordions -->
-        <p class="tt-price-anchor">Founding Texans save an average of $48 a year versus one-time pricing. That gap widens every time the retail price goes up.</p>
+        <p class="tt-price-anchor">Founding Members save an average of $72 a year versus one-time pricing. That gap widens every time the retail price goes up.</p>
 
       </div>
     </div>
@@ -1925,9 +2355,8 @@
     <div class="tt-proof__grid">
       <div class="tt-proof__col tt-proof__col--1">
         <div class="tt-proof__img-wrap">
-          <div class="tt-proof__img-placeholder">
-            <!-- REPLACE: close-up photo of raw cane sugar crystals, natural light,
-                 warm tones. Square crop. No white background — raw/tactile. -->
+          <img src="https://texastea.com/cdn/shop/files/canesugar.png?v=1775844969" alt="Pure cane sugar crystals" style="width:140px;height:140px;object-fit:contain;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="tt-proof__img-placeholder" style="display:none;">
             <span class="tt-proof__img-alt">PURE CANE SUGAR</span>
           </div>
         </div>
@@ -1936,9 +2365,8 @@
       </div>
       <div class="tt-proof__col tt-proof__col--2">
         <div class="tt-proof__img-wrap">
-          <div class="tt-proof__img-placeholder">
-            <!-- REPLACE: loose-leaf black tea or dried tea leaves, close-up,
-                 dark tones. Square crop. Raw and textural. -->
+          <img src="https://texastea.com/cdn/shop/files/TEA.png?v=1775845800" alt="Organic black tea leaves" style="width:140px;height:140px;object-fit:contain;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="tt-proof__img-placeholder" style="display:none;">
             <span class="tt-proof__img-alt">ORGANIC BLACK TEA</span>
           </div>
         </div>
@@ -1947,9 +2375,8 @@
       </div>
       <div class="tt-proof__col tt-proof__col--3">
         <div class="tt-proof__img-wrap">
-          <div class="tt-proof__img-placeholder">
-            <!-- REPLACE: sliced lemon cross-section or fresh lemon on natural surface.
-                 Bright, acidic, real. Square crop. No white studio background. -->
+          <img src="https://texastea.com/cdn/shop/files/LEMON.png?v=1775844970" alt="Cold-pressed lemon" style="width:140px;height:140px;object-fit:contain;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="tt-proof__img-placeholder" style="display:none;">
             <span class="tt-proof__img-alt">REAL LEMON JUICE</span>
           </div>
         </div>
@@ -1991,8 +2418,11 @@
                      Do NOT generate a freehand Texas outline — use a real SVG path. -->
         <div class="tt-origin__right">
           <div class="tt-origin__location">SUGAR LAND, TX</div>
-          <div class="tt-origin__map-placeholder"></div>
-          <div class="tt-origin__map-note">[ REPLACE WITH TEXAS SVG MAP ]</div>
+          <div class="tt-origin__map-img-wrap">
+            <img src="https://texastea.com/cdn/shop/files/suagrlandmap.png?v=1775844970" alt="Map showing Sugar Land, Texas location" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+            <div class="tt-img-fallback">SUGAR LAND, TX &mdash; MAP</div>
+          </div>
+          <div class="tt-origin__map-note">Founded 1838 &middot; Fort Bend County</div>
         </div>
       </div>
     </div>
@@ -2056,6 +2486,8 @@
     <div class="tt-taste__inner">
       <h2 class="tt-taste__header">TASTE PROFILE</h2>
 
+      <p class="tt-taste__intro">A classic Southern sweet tea, built on single-origin organic black tea and pure cane sugar. Bright enough to cut through Texas heat, rich enough to stand up to a plate of brisket. Never cloying, never thin.</p>
+
       <div class="tt-taste__bar-row">
         <div class="tt-taste__bar-top">
           <span class="tt-taste__bar-label">SWEET</span>
@@ -2064,6 +2496,7 @@
         <div class="tt-taste__bar-track">
           <div class="tt-taste__bar-fill tt-fill-80"></div>
         </div>
+        <p class="tt-taste__bar-note">Pure cane sugar &mdash; forward and clean, never syrupy.</p>
       </div>
 
       <div class="tt-taste__bar-row">
@@ -2074,6 +2507,7 @@
         <div class="tt-taste__bar-track">
           <div class="tt-taste__bar-fill tt-fill-38"></div>
         </div>
+        <p class="tt-taste__bar-note">Cold-pressed lemon juice for brightness and lift.</p>
       </div>
 
       <div class="tt-taste__bar-row">
@@ -2084,9 +2518,46 @@
         <div class="tt-taste__bar-track">
           <div class="tt-taste__bar-fill tt-fill-20"></div>
         </div>
+        <p class="tt-taste__bar-note">A touch of tannin from the black tea &mdash; backbone, not bite.</p>
       </div>
 
       <p class="tt-taste__serving">Best served over ice. Pairs with grilled meats, smoked brisket, and long Texas afternoons.</p>
+
+      <div class="tt-taste__pairings">
+        <h3 class="tt-taste__pairings-header">GOOD WITH</h3>
+        <div class="tt-taste__pairings-grid">
+          <div class="tt-pairing-card">
+            <span class="tt-pairing-icon">F</span>
+            <span class="tt-pairing-label">BRISKET</span>
+            <span class="tt-pairing-note">Cuts through the fat, balances the char.</span>
+          </div>
+          <div class="tt-pairing-card">
+            <span class="tt-pairing-icon">F</span>
+            <span class="tt-pairing-label">FRIED CHICKEN</span>
+            <span class="tt-pairing-note">The classic pairing. Sweet on salty, every time.</span>
+          </div>
+          <div class="tt-pairing-card">
+            <span class="tt-pairing-icon">F</span>
+            <span class="tt-pairing-label">PECAN PIE</span>
+            <span class="tt-pairing-note">Tannin cuts the sweetness. A Texas dessert ritual.</span>
+          </div>
+          <div class="tt-pairing-card">
+            <span class="tt-pairing-icon">D</span>
+            <span class="tt-pairing-label">BOURBON SPLIT</span>
+            <span class="tt-pairing-note">Half tea, half bourbon, over ice. Ranch water's cousin.</span>
+          </div>
+          <div class="tt-pairing-card">
+            <span class="tt-pairing-icon">D</span>
+            <span class="tt-pairing-label">ARNOLD PALMER</span>
+            <span class="tt-pairing-note">Swap the lemonade. Still an Arnold Palmer, only sharper.</span>
+          </div>
+          <div class="tt-pairing-card">
+            <span class="tt-pairing-icon">D</span>
+            <span class="tt-pairing-label">ICE &amp; MINT</span>
+            <span class="tt-pairing-note">Crushed ice, fresh mint, nothing else. The purest form.</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -2095,54 +2566,125 @@
        ================================================================ -->
   <section class="tt-reviews" id="reviews">
     <h2 class="tt-reviews-header">WHAT PEOPLE ARE SAYING</h2>
-    <div class="tt-reviews-grid">
-      <article class="tt-review-card">
-        <div class="tt-reviewer-top">
-          <div class="tt-reviewer-photo">
-            <!-- REPLACE: headshot or avatar photo of reviewer Michael T.
-                 Round crop. If no real photo, leave placeholder. -->
-            <span class="tt-reviewer-initials">MT</span>
-          </div>
+
+    <div class="tt-reviews-carousel">
+      <button type="button" class="tt-rev-arrow tt-rev-arrow-prev" id="tt-rev-prev" aria-label="Previous reviews">
+        <i data-lucide="chevron-left"></i>
+      </button>
+
+      <div class="tt-reviews-viewport">
+        <div class="tt-reviews-track" id="tt-reviews-track">
+
+          <article class="tt-review-card">
+            <div class="tt-reviewer-top">
+              <div class="tt-reviewer-photo">
+                <span class="tt-reviewer-initials">MT</span>
+              </div>
+            </div>
+            <div class="tt-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="tt-review-text">"Bold, clean tea that tastes rich and refreshing, not thin or watery. This is the real thing."</p>
+            <div class="tt-review-meta">
+              <span class="tt-review-author">MICHAEL T.  &middot;  NASHVILLE, TN</span>
+              <span class="tt-review-badge">VERIFIED BUYER</span>
+            </div>
+          </article>
+
+          <article class="tt-review-card">
+            <div class="tt-reviewer-top">
+              <div class="tt-reviewer-photo">
+                <span class="tt-reviewer-initials">SK</span>
+              </div>
+            </div>
+            <div class="tt-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="tt-review-text">"This one is actually made in Texas instead of New Jersey. You can tell from the first sip."</p>
+            <div class="tt-review-meta">
+              <span class="tt-review-author">SARAH K.  &middot;  DENVER, CO</span>
+              <span class="tt-review-badge">VERIFIED BUYER</span>
+            </div>
+          </article>
+
+          <article class="tt-review-card">
+            <div class="tt-reviewer-top">
+              <div class="tt-reviewer-photo">
+                <span class="tt-reviewer-initials">JR</span>
+              </div>
+            </div>
+            <div class="tt-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="tt-review-text">"The sweetness is obviously pure cane sugar. Almost gritty and I mean that in the best possible way."</p>
+            <div class="tt-review-meta">
+              <span class="tt-review-author">JAMES R.  &middot;  AUSTIN, TX</span>
+              <span class="tt-review-badge">VERIFIED BUYER</span>
+              <span class="tt-texan-badge">TEXAN</span>
+            </div>
+          </article>
+
+          <article class="tt-review-card">
+            <div class="tt-reviewer-top">
+              <div class="tt-reviewer-photo">
+                <span class="tt-reviewer-initials">LP</span>
+              </div>
+            </div>
+            <div class="tt-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="tt-review-text">"I was raised on sweet tea in Georgia and this one holds its own. Genuinely brewed, not a flavoring."</p>
+            <div class="tt-review-meta">
+              <span class="tt-review-author">LINDA P.  &middot;  ATLANTA, GA</span>
+              <span class="tt-review-badge">VERIFIED BUYER</span>
+            </div>
+          </article>
+
+          <article class="tt-review-card">
+            <div class="tt-reviewer-top">
+              <div class="tt-reviewer-photo">
+                <span class="tt-reviewer-initials">RW</span>
+              </div>
+            </div>
+            <div class="tt-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="tt-review-text">"Grew up in Sugar Land. This tastes like the sugar I knew as a kid &mdash; the real Imperial stuff."</p>
+            <div class="tt-review-meta">
+              <span class="tt-review-author">RAY W.  &middot;  HOUSTON, TX</span>
+              <span class="tt-review-badge">VERIFIED BUYER</span>
+              <span class="tt-texan-badge">TEXAN</span>
+            </div>
+          </article>
+
+          <article class="tt-review-card">
+            <div class="tt-reviewer-top">
+              <div class="tt-reviewer-photo">
+                <span class="tt-reviewer-initials">AM</span>
+              </div>
+            </div>
+            <div class="tt-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="tt-review-text">"Finally a bottled tea that isn't loaded with corn syrup. The glass bottle is a nice touch, too."</p>
+            <div class="tt-review-meta">
+              <span class="tt-review-author">ANNA M.  &middot;  PORTLAND, OR</span>
+              <span class="tt-review-badge">VERIFIED BUYER</span>
+            </div>
+          </article>
+
+          <article class="tt-review-card">
+            <div class="tt-reviewer-top">
+              <div class="tt-reviewer-photo">
+                <span class="tt-reviewer-initials">CT</span>
+              </div>
+            </div>
+            <div class="tt-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="tt-review-text">"Packs in the cooler for tailgates. The bottle is heavy in the best way &mdash; you feel the quality."</p>
+            <div class="tt-review-meta">
+              <span class="tt-review-author">CARLOS T.  &middot;  SAN ANTONIO, TX</span>
+              <span class="tt-review-badge">VERIFIED BUYER</span>
+              <span class="tt-texan-badge">TEXAN</span>
+            </div>
+          </article>
+
         </div>
-        <div class="tt-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="tt-review-text">"Bold, clean tea that tastes rich and refreshing, not thin or watery. This is the real thing."</p>
-        <div class="tt-review-meta">
-          <span class="tt-review-author">MICHAEL T.  &middot;  NASHVILLE, TN</span>
-          <span class="tt-review-badge">VERIFIED BUYER</span>
-        </div>
-      </article>
-      <article class="tt-review-card">
-        <div class="tt-reviewer-top">
-          <div class="tt-reviewer-photo">
-            <!-- REPLACE: headshot or avatar photo of reviewer Sarah K.
-                 Round crop. If no real photo, leave placeholder. -->
-            <span class="tt-reviewer-initials">SK</span>
-          </div>
-        </div>
-        <div class="tt-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="tt-review-text">"This one is actually made in Texas instead of New Jersey. You can tell from the first sip."</p>
-        <div class="tt-review-meta">
-          <span class="tt-review-author">SARAH K.  &middot;  DENVER, CO</span>
-          <span class="tt-review-badge">VERIFIED BUYER</span>
-        </div>
-      </article>
-      <article class="tt-review-card">
-        <div class="tt-reviewer-top">
-          <div class="tt-reviewer-photo">
-            <!-- REPLACE: headshot or avatar photo of reviewer James R.
-                 Round crop. If no real photo, leave placeholder. -->
-            <span class="tt-reviewer-initials">JR</span>
-          </div>
-        </div>
-        <div class="tt-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="tt-review-text">"The sweetness is obviously pure cane sugar. Almost gritty and I mean that in the best possible way."</p>
-        <div class="tt-review-meta">
-          <span class="tt-review-author">JAMES R.  &middot;  AUSTIN, TX</span>
-          <span class="tt-review-badge">VERIFIED BUYER</span>
-          <span class="tt-texan-badge">TEXAN</span>
-        </div>
-      </article>
+      </div>
+
+      <button type="button" class="tt-rev-arrow tt-rev-arrow-next" id="tt-rev-next" aria-label="Next reviews">
+        <i data-lucide="chevron-right"></i>
+      </button>
     </div>
+
+    <div class="tt-reviews-dots" id="tt-reviews-dots" aria-hidden="true"></div>
   </section>
 
   <!-- ================================================================
@@ -2272,7 +2814,7 @@
   <div class="tt-sticky" id="sticky-atc">
     <div class="tt-sticky-left">
       <span class="tt-sticky-name">SUGAR LAND SWEET TEA</span>
-      <span class="tt-sticky-price" id="tt-sticky-price">$19.19 / case</span>
+      <span class="tt-sticky-price" id="tt-sticky-price">$17.99 / case</span>
     </div>
     <button type="button" class="tt-sticky-cta" id="tt-sticky-cta">LOCK IN MY FOUNDING RATE &rarr;</button>
   </div>
@@ -2360,7 +2902,7 @@
           mainCta.classList.remove('tt-cta-once');
           mainCta.textContent = 'LOCK IN MY FOUNDING RATE  \u2192';
         }
-        if (stickyPrice) stickyPrice.textContent = '$19.19 / case';
+        if (stickyPrice) stickyPrice.textContent = '$17.99 / case';
         if (stickyCta) {
           stickyCta.classList.remove('tt-sticky-cta-once');
           stickyCta.textContent = 'LOCK IN MY FOUNDING RATE \u2192';
@@ -2437,8 +2979,201 @@
       if (window.lucide && typeof window.lucide.createIcons === 'function') {
         window.lucide.createIcons();
       }
+
+      // ============================================
+      // 6. REVIEWS CAROUSEL
+      // ============================================
+      (function initReviewsCarousel() {
+        var track = document.getElementById('tt-reviews-track');
+        var prevBtn = document.getElementById('tt-rev-prev');
+        var nextBtn = document.getElementById('tt-rev-next');
+        var dotsHost = document.getElementById('tt-reviews-dots');
+        if (!track) return;
+
+        var cards = track.querySelectorAll('.tt-review-card');
+        var total = cards.length;
+        var index = 0;
+        var autoTimer = null;
+        var GAP = 20;
+
+        function getVisibleCount() {
+          var w = window.innerWidth;
+          if (w <= 768) return 1;
+          if (w <= 1024) return 2;
+          return 3;
+        }
+
+        function getPageCount() {
+          var v = getVisibleCount();
+          var pages = total - v + 1;
+          return pages > 0 ? pages : 1;
+        }
+
+        function renderDots() {
+          if (!dotsHost) return;
+          dotsHost.innerHTML = '';
+          var pages = getPageCount();
+          for (var i = 0; i < pages; i++) {
+            var d = document.createElement('button');
+            d.type = 'button';
+            d.className = 'tt-reviews-dot' + (i === index ? ' tt-reviews-dot-active' : '');
+            d.setAttribute('aria-label', 'Go to review page ' + (i + 1));
+            (function (i) {
+              d.addEventListener('click', function () {
+                index = i;
+                update();
+                restartAuto();
+              });
+            })(i);
+            dotsHost.appendChild(d);
+          }
+        }
+
+        function update() {
+          if (!cards.length) return;
+          var card = cards[0];
+          var cardWidth = card.getBoundingClientRect().width;
+          var shift = index * (cardWidth + GAP);
+          track.style.transform = 'translateX(-' + shift + 'px)';
+          var ds = dotsHost ? dotsHost.querySelectorAll('.tt-reviews-dot') : [];
+          for (var i = 0; i < ds.length; i++) {
+            if (i === index) ds[i].classList.add('tt-reviews-dot-active');
+            else ds[i].classList.remove('tt-reviews-dot-active');
+          }
+        }
+
+        function next() {
+          var pages = getPageCount();
+          index = (index + 1) % pages;
+          update();
+        }
+        function prev() {
+          var pages = getPageCount();
+          index = (index - 1 + pages) % pages;
+          update();
+        }
+
+        function startAuto() {
+          stopAuto();
+          autoTimer = setInterval(next, 4000);
+        }
+        function stopAuto() {
+          if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+        }
+        function restartAuto() { startAuto(); }
+
+        if (nextBtn) nextBtn.addEventListener('click', function () { next(); restartAuto(); });
+        if (prevBtn) prevBtn.addEventListener('click', function () { prev(); restartAuto(); });
+
+        var carousel = track.closest('.tt-reviews-carousel');
+        if (carousel) {
+          carousel.addEventListener('mouseenter', stopAuto);
+          carousel.addEventListener('mouseleave', startAuto);
+        }
+
+        window.addEventListener('resize', function () {
+          var pages = getPageCount();
+          if (index >= pages) index = pages - 1;
+          renderDots();
+          update();
+        });
+
+        renderDots();
+        update();
+        startAuto();
+      })();
+
+      // ============================================
+      // 7. TEXAS STORY CARD MODAL
+      // ============================================
+      var storyOpen = document.getElementById('tt-story-preview-btn');
+      var storyModal = document.getElementById('tt-story-modal');
+      var storyClose = document.getElementById('tt-story-close');
+      var storyBackdrop = storyModal ? storyModal.querySelector('.tt-story-backdrop') : null;
+
+      function openStoryModal() {
+        if (!storyModal) return;
+        storyModal.classList.add('tt-story-open');
+        storyModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeStoryModal() {
+        if (!storyModal) return;
+        storyModal.classList.remove('tt-story-open');
+        storyModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+      if (storyOpen) storyOpen.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        openStoryModal();
+      });
+      if (storyClose) storyClose.addEventListener('click', closeStoryModal);
+      if (storyBackdrop) storyBackdrop.addEventListener('click', closeStoryModal);
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && storyModal && storyModal.classList.contains('tt-story-open')) {
+          closeStoryModal();
+        }
+      });
     });
   </script>
+
+  <!-- ================================================================
+       TEXAS STORY CARD — MODAL PREVIEW
+       ================================================================ -->
+  <div class="tt-story-modal" id="tt-story-modal" aria-hidden="true" role="dialog" aria-labelledby="tt-story-title">
+    <div class="tt-story-backdrop"></div>
+    <div class="tt-story-dialog">
+      <button type="button" class="tt-story-close" id="tt-story-close" aria-label="Close story card preview">
+        <i data-lucide="x"></i>
+      </button>
+
+      <div class="tt-postcard">
+        <div class="tt-postcard__stamp">
+          <div class="tt-postcard__stamp-frame">
+            <div class="tt-postcard__stamp-state">TX</div>
+            <div class="tt-postcard__stamp-val">FOUNDED 1838</div>
+          </div>
+        </div>
+
+        <div class="tt-postcard__ribbon">THE TEXAS STORY CARD</div>
+
+        <h2 class="tt-postcard__title" id="tt-story-title">SUGAR LAND, TX</h2>
+        <div class="tt-postcard__sub">POPULATION 118,488 &middot; FORT BEND COUNTY</div>
+
+        <div class="tt-postcard__divider"></div>
+
+        <p class="tt-postcard__body">Sugar Land got its name the honest way &mdash; it was built on sugarcane. In 1838, Samuel May Williams planted the first fields here. By the 1900s, the Imperial Sugar refinery towered over the town and stamped its name into every bag of pure cane sugar shipped from Texas.</p>
+
+        <p class="tt-postcard__body">That same pure cane sugar &mdash; from the fields that gave Sugar Land its name &mdash; sweetens every bottle of this tea. Not a syrup. Not a flavoring. The real thing, traceable to the source.</p>
+
+        <div class="tt-postcard__facts">
+          <div class="tt-postcard__fact">
+            <div class="tt-postcard__fact-label">FOUNDED</div>
+            <div class="tt-postcard__fact-val">1838</div>
+          </div>
+          <div class="tt-postcard__fact">
+            <div class="tt-postcard__fact-label">REFINERY</div>
+            <div class="tt-postcard__fact-val">IMPERIAL SUGAR</div>
+          </div>
+          <div class="tt-postcard__fact">
+            <div class="tt-postcard__fact-label">CROP</div>
+            <div class="tt-postcard__fact-val">PURE CANE</div>
+          </div>
+        </div>
+
+        <div class="tt-postcard__divider"></div>
+
+        <div class="tt-postcard__foot">
+          <div class="tt-postcard__foot-left">
+            <div class="tt-postcard__foot-label">SHIPPED WITH YOUR FIRST CASE</div>
+            <div class="tt-postcard__foot-sub">Each SKU ships with its own card. Never repeated.</div>
+          </div>
+          <div class="tt-postcard__foot-mark">TX &middot; 1838</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>
